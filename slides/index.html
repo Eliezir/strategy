@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy Pattern — POO · IFAL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+
+<!-- Lightbox (usado pra screenshots do bloco de agentic coding) -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <button class="lightbox-nav lightbox-nav-prev" id="lightbox-prev">&#8592;</button>
+  <img id="lightbox-img" src="" alt="Ampliar imagem">
+  <button class="lightbox-nav lightbox-nav-next" id="lightbox-next">&#8594;</button>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<div id="pres">
+  <div id="viewport">
+    <div id="scaler">
+
+      <!-- ═══ SLIDE 1 — CAPA ═══ -->
+      <div class="slide s-dark active" id="s-capa">
+        <div class="slide-inner" style="justify-content:flex-end; background: radial-gradient(ellipse 80% 60% at 80% 30%, rgba(16,185,129,.13) 0%, transparent 60%), var(--navy);">
+          <div style="position:absolute;top:0;right:0;width:320px;height:100%;background:linear-gradient(135deg,transparent,rgba(16,185,129,.06));pointer-events:none;"></div>
+          <div class="slide-tag">Padrões de Projeto · POO · IFAL 2026.1</div>
+          <h1 class="display" style="max-width:620px">Strategy<br><span style="color:var(--accent2);font-style:italic;font-weight:500;">Design Pattern</span></h1>
+          <div class="divider"></div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--accent2);font-style:italic;margin-bottom:32px;">
+            Intercambiando algoritmos em Java — do <code class="inline">if/else</code> ao agentic coding
+          </p>
+          <div class="capa-meta">
+            <div class="meta-row">
+              <span class="meta-key">Grupo</span>
+              <span class="meta-val">Eliezir Moreira</span>
+              <span class="meta-val">Thomas Gabriel</span>
+              <span class="meta-val">Carlos Roque</span>
+              <span class="meta-val">Eduardo Pereira</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-key">Professor</span>
+              <span class="meta-val">Kenji</span>
+              <div style="margin-top:16px;">
+                <span class="meta-key">Disciplina</span>
+                <span class="meta-val">Programação Orientada a Objetos</span>
+              </div>
+              <div style="margin-top:10px;">
+                <span class="meta-key">Curso</span>
+                <span class="meta-val">Sistemas de Informação · 4º período</span>
+              </div>
+              <div style="margin-top:10px;">
+                <span class="meta-key">Data</span>
+                <span class="meta-val">Abril de 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">1</div>
+      </div>
+
+      <!-- ═══ SLIDE 2 — SUMÁRIO ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Sumário</div>
+          <h2 class="section">O que será abordado</h2>
+          <div class="divider"></div>
+          <ul class="summary-list">
+            <li class="summary-item">
+              <span class="s-idx">01</span>
+              <div>
+                <div class="s-title">O que são padrões de projeto</div>
+                <div class="s-sub">Definição, famílias da GoF e o que um padrão não é</div>
+              </div>
+            </li>
+            <li class="summary-item">
+              <span class="s-idx">02</span>
+              <div>
+                <div class="s-title">Por que padrões importam hoje</div>
+                <div class="s-sub">Colaboração humana + a realidade do agentic coding</div>
+              </div>
+            </li>
+            <li class="summary-item">
+              <span class="s-idx">03</span>
+              <div>
+                <div class="s-title">Strategy — intenção e estrutura</div>
+                <div class="s-sub">O problema, a solução e a UML do padrão</div>
+              </div>
+            </li>
+            <li class="summary-item">
+              <span class="s-idx">04</span>
+              <div>
+                <div class="s-title">Strategy em Java — demo de código</div>
+                <div class="s-sub">Cálculo de frete: do <code class="inline">if/else</code> hell à solução extensível</div>
+              </div>
+            </li>
+            <li class="summary-item">
+              <span class="s-idx">05</span>
+              <div>
+                <div class="s-title">Encerramento — quando NÃO usar</div>
+                <div class="s-sub">Armadilhas, over-engineering e padrões relacionados</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="corner-num">2</div>
+      </div>
+
+      <!-- ═══ [SLIDES DE CONTEÚDO SERÃO ADICIONADOS AQUI] ═══ -->
+
+    </div>
+  </div>
+</div>
+
+<!-- Theme toggle -->
+<button class="theme-toggle" id="theme-toggle" title="Alternar tema claro/escuro">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<!-- TOC toggle -->
+<button class="toc-toggle" id="toc-toggle">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+
+<!-- TOC panel -->
+<div class="toc-panel" id="toc-panel">
+  <div class="toc-header">Sumário</div>
+  <div class="toc-list">
+    <div class="toc-section">Abertura</div>
+    <a class="toc-item" data-goto="0">1 · Capa</a>
+    <a class="toc-item" data-goto="1">2 · Sumário</a>
+    <!-- [Os demais itens serão preenchidos junto com os slides de conteúdo] -->
+  </div>
+</div>
+
+<button class="nav-btn" id="nav-prev">&#8592;</button>
+<button class="nav-btn" id="nav-next">&#8594;</button>
+<div id="counter"></div>
+
+<script src="js/engine.js"></script>
+</body>
+</html>
