@@ -328,38 +328,31 @@
         <div class="corner-num">8</div>
       </div>
 
-      <!-- ═══ SLIDE 9 — BLOCO 2b: A IA VIROU PADRÃO + CONFIG FILES + ORCHESTRATORS ═══ -->
+      <!-- ═══ SLIDE 9 — BLOCO 2b: A IA AMPLIFICA — INCLUSIVE A BAGUNÇA ═══ -->
       <div class="slide s-dark2">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 2 · Realidade 2026</div>
-          <h2 class="section">A IA virou padrão — e o <em style="color:var(--accent2);font-style:normal;">projeto</em> precisa ensinar as regras</h2>
+          <h2 class="section">A IA está aqui — e <em style="color:var(--accent2);font-style:normal;">amplifica</em> o que encontrar</h2>
           <div class="divider"></div>
           <p class="key-quote" style="font-size:22px;padding:2px 0 6px;max-width:840px;">
-            Cada dia escrevemos <span class="hl">mais</span> código —
+            Escrevemos <span class="hl">mais</span> código que nunca —
             e <span class="hl">digitamos</span> menos ao mesmo tempo.
           </p>
           <p style="font-size:13px;color:var(--ink2);line-height:1.55;max-width:840px;margin-bottom:14px;">
-            Usar agentes virou rotina. O novo desafio é <strong style="color:var(--ink);">transmitir pra IA</strong> as convenções, valores e decisões de design do projeto — como num onboarding humano, só que em Markdown versionado junto do código.
+            Agentes produzem código numa velocidade que nenhum humano acompanha. O detalhe: eles entregam <strong style="color:var(--ink);">o que você pede</strong> — não necessariamente o que <strong style="color:var(--ink);">combina</strong> com o resto do projeto. Sem padrão bem definido, a velocidade vira <strong style="color:var(--ink);">bagunça</strong>.
           </p>
-          <div style="margin-bottom:10px;">
-            <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px;">A solução — regras em arquivo, versionadas no repo</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
-              <div class="card" style="border-left:3px solid var(--accent);padding:9px 13px;">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent3);font-weight:600;margin-bottom:3px;">CLAUDE.md</div>
-                <div style="font-size:10.5px;color:var(--muted);line-height:1.4;">Claude Code · convenções do repo lidas em toda sessão.</div>
-              </div>
-              <div class="card" style="border-left:3px solid var(--accent);padding:9px 13px;">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent3);font-weight:600;margin-bottom:3px;">AGENTS.md</div>
-                <div style="font-size:10.5px;color:var(--muted);line-height:1.4;">Padrão aberto — Codex, Copilot e ferramentas de agente.</div>
-              </div>
-              <div class="card" style="border-left:3px solid var(--accent);padding:9px 13px;">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent3);font-weight:600;margin-bottom:3px;">.cursor/rules/*.mdc</div>
-                <div style="font-size:10.5px;color:var(--muted);line-height:1.4;">Cursor · regras por contexto, com globs e escopos.</div>
-              </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;">
+            <div class="card" style="border-left:3px solid var(--red);">
+              <div class="card-title" style="color:var(--red2);">Sem padrão no projeto</div>
+              <div class="card-body">Cada sessão inventa o próprio jeito. Feature A usa <code class="inline">if/else</code>, B usa <code class="inline">switch</code>, C usa <code class="inline">Map&lt;String,Function&gt;</code>. <strong style="color:var(--ink);">Seis meses depois há cinco dialetos</strong> no mesmo repo — nenhum errado, nenhum igual.</div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--accent);">
+              <div class="card-title">Com padrão definido</div>
+              <div class="card-body">A IA lê as classes existentes e <strong style="color:var(--ink);">copia o molde</strong>. Toda feature nova nasce parecida com o que veio antes — velocidade vira produtividade, não dívida técnica.</div>
             </div>
           </div>
           <p style="font-size:12px;color:var(--ink2);font-style:italic;margin-bottom:10px;max-width:840px;">
-            Quando seu padrão <strong style="color:var(--accent2);font-style:normal;">Strategy</strong> está documentado aqui, toda feature nova criada pela IA já nasce <strong>no padrão correto</strong> — sem precisar lembrar, sem drift com o tempo.
+            Sem padrão, a IA não é aliada — é <strong style="color:var(--accent2);font-style:normal;">fábrica de inconsistência</strong>. O padrão é o trilho que mantém todo código novo no mesmo caminho.
           </p>
           <button class="orch-open-btn" id="orch-open-btn" type="button">
             <div class="orch-open-previews">
@@ -381,10 +374,13 @@
       <div class="slide s-dark">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 2 · Tese central</div>
-          <h2 class="section">Agora, trabalhar sozinho é <em style="color:var(--accent2);font-style:normal;">pair programming</em></h2>
+          <h2 class="section">Mesmo sozinho, você <em style="color:var(--accent2);font-style:normal;">já trabalha em par</em></h2>
           <div class="divider"></div>
-          <p style="font-size:13.5px;color:var(--ink2);line-height:1.55;max-width:760px;margin-bottom:14px;">
-            Você descreve a intenção, o agente propõe, você revisa, aceita ou corrige. Esse ciclo é <strong style="color:var(--accent2);">pair programming</strong> — só que o par nunca cansa. E funciona <em>muito</em> melhor em código com padrões claros.
+          <p style="font-size:13.5px;color:var(--ink2);line-height:1.55;max-width:820px;margin-bottom:10px;">
+            Padrão de projeto sempre foi vendido como <em>etiqueta de time</em> — "escreve bonito pro próximo dev ler". Em projeto solo, dava pra relaxar: <em>o próximo dev era você mesmo</em>.
+          </p>
+          <p style="font-size:13.5px;color:var(--ink2);line-height:1.55;max-width:820px;margin-bottom:14px;">
+            Hoje não dá mais. <strong style="color:var(--ink);">Até no seu projeto pessoal você escreve em dupla</strong> — com a IA. Ela propõe, você revisa, aceita ou corrige. O ciclo é <strong style="color:var(--accent2);">pair programming</strong>. E a IA só entrega código consistente se encontrar <strong style="color:var(--ink);">padrão definido</strong> pra copiar.
           </p>
           <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:16px;flex:1;min-height:0;">
             <div class="pair-demo">
@@ -399,7 +395,10 @@
               <div class="pair-pane human">
                 <div class="pair-header"><span class="pair-dot"></span>Você · revisando</div>
                 <div class="pair-review accept"><span class="icon">✓</span>Casa com o padrão Strategy</div>
-                <div class="pair-review edit"><span class="icon">✎</span>Renomeia <code class="inline">pesoKg</code> pra <code class="inline">peso</code></div>
+                <div class="pair-review edit" style="display:flex;flex-direction:column;gap:10px;">
+                  <div>   <span class="icon" style="margin-right: 5px">✎</span>Renomeia <code class="inline">pesoKg</code></div>
+                  <div>   <span class="icon" style="margin-right: 5px">✎</span>pra <code class="inline">peso</code></div>
+                </div>
                 <div class="pair-review ask"><span class="icon">?</span>Tem teste isolado pra essa tarifa?</div>
               </div>
             </div>
@@ -421,8 +420,8 @@
               <div class="q-card" style="padding:12px 14px;">
                 <div class="q-num" style="font-size:28px;">3</div>
                 <div>
-                  <div class="q-label">Revisão mais barata</div>
-                  <div class="q-text" style="font-size:12.5px;">Você revisa uma classe pequena que <em>você já sabe onde encaixa</em>. Confiança sobe, erro cai.</div>
+                  <div class="q-label">Você-futuro entende</div>
+                  <div class="q-text" style="font-size:12.5px;">Voltar ao projeto em 2 meses? Padrão é <strong style="color:var(--ink);">memória externa</strong> — você (e a IA) retomam em minutos, não horas.</div>
                 </div>
               </div>
             </div>
