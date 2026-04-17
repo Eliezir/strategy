@@ -12,54 +12,100 @@
 
 | # | Bloco | Tempo |
 |---|---|---|
-| 0 | Abertura & apresentação do grupo | 1 min |
-| 1 | O que são padrões de projeto | 3 min |
-| 2 | Por que padrões importam (colaboração + agentic coding) | 5 min |
+| 0 | Abertura + gancho "a dor real" em código | 2 min |
+| 1 | O que são padrões de projeto | 2,5 min |
+| 2 | Por que padrões importam (colaboração + agentic coding) | 4,5 min |
 | 3 | Strategy — intenção, estrutura, UML | 4 min |
 | 4 | Strategy em Java — demo de código | 5 min |
 | 5 | Encerramento, quando **não** usar, Q&A | 2 min |
+| 6 | **[Reserva]** Bônus: Strategy vs State | +1,5 min (pós Q&A) |
 
 > A divisão de quem fala o quê será definida entre o próprio grupo.
 
 ---
 
-## Bloco 0 — Abertura (1 min)
+## Bloco 0 — Abertura + "a dor real" (2 min)
+
+Este bloco tem dois momentos: uma abertura rápida (capa) e um **gancho forte em código**, mostrando visualmente o tipo de dor que o padrão Strategy resolve — *antes* de apresentar qualquer definição.
+
+### 0.1. Abertura (20s)
 
 **Slide sugerido:** capa com título, nomes do grupo, disciplina, professor.
 
 **Fala-guia:**
 > "Bom dia/boa tarde. Somos Eliezir, Thomas, Carlos e Eduardo, e hoje a gente vai falar sobre o padrão de projeto **Strategy**, na disciplina de POO do professor Kenji."
 
-**Gancho pro público (15–20s, antes de entrar em definições):**
-> "Antes de começar — rápido: quem aqui já escreveu um `if/else` gigantesco no código e, uma semana depois, precisou adicionar mais um `else if`? E mais um? E mais um? [pausa] Pois é. Essa dor não é só de vocês — é um problema clássico, e hoje a gente mostra um padrão que resolve exatamente isso."
+### 0.2. Gancho em código — a dor real (1 min)
+
+**Slide sugerido:** trecho de código grande, propositalmente feio, ocupando metade ou mais do slide. Exemplo:
+
+```java
+public class Processador {
+
+    public void executar(String feature, Request req) {
+        switch (feature) {
+            case "feature1":
+                // lógica da feature 1
+                validar(req); salvar(req); notificar(req);
+                break;
+            case "feature2":
+                // lógica da feature 2
+                validar(req); gerarRelatorio(req);
+                break;
+            case "feature3":
+                // lógica da feature 3
+                aplicarDesconto(req); salvar(req);
+                break;
+            case "feature4":
+                // ...
+                break;
+            case "feature5":
+                // ...
+                break;
+            // ... e mais 10 cases ...
+            default:
+                throw new IllegalArgumentException("Feature desconhecida: " + feature);
+        }
+    }
+}
+```
+
+### 0.3. A realidade dos projetos (40s)
+
+**Slide sugerido:** 3 pontos curtos ou uma imagem simbolizando "escopo crescendo"; a fala é o que carrega.
+
+**Fala-guia, desenvolvendo o "por que isso acontece":**
+
+- **Ninguém escreve esse código de propósito.** Projeto real raramente nasce com o escopo fechado. Você começa com 3 casos bem definidos.
+- **Na maioria das vezes, nem o próprio cliente sabe o que quer no início.** Entrega a primeira versão, ele usa, pede ajustes, aparece uma feature nova. Depois outra. Depois outra.
+- **Aí o código cresce organicamente.** Em 6 meses, aquele `switch` de 3 casos virou 15. Cada feature nova exige editar a mesma classe. Testar uma feature depende de instanciar o sistema inteiro. Mudar uma coisa pode quebrar outra.
+- **E aqui vai o ponto-chave pra fechar o gancho:**
+> "Isso não é incompetência — é a natureza do negócio de software. E padrões de projeto existem **exatamente** porque essa dor é inevitável. Eles são a resposta sistematizada de quem passou por isso primeiro. Hoje a gente vai falar de um padrão específico que ataca direto o problema desse switch aí."
 
 ---
 
-## Bloco 1 — O que são padrões de projeto (3 min)
+## Bloco 1 — O que são padrões de projeto (2,5 min)
 
-**Slides sugeridos (2–3):**
-1. Definição.
-2. As 3 famílias da GoF.
-3. O que padrão *não* é.
+**Slides sugeridos (2):**
+1. Definição + analogia + origem (famílias).
+2. O que padrão *não* é.
 
-### 1.1. Definição curta (40s)
+### 1.1. Definição curta (30s)
 
 > "Padrões de projeto são **soluções reutilizáveis e nomeadas** para problemas que aparecem repetidamente no design de sistemas orientados a objetos. Não é código pronto — é uma **receita** pra resolver um tipo de problema."
 
+**Analogia rápida:** o padrão é a *receita*, não o bolo. Dois cozinheiros seguem a mesma receita e entregam bolos ligeiramente diferentes — a receita guia, não obriga.
+
 ### 1.2. Origem e famílias (1 min)
 
-- Consagrados em 1994 pelo livro *Design Patterns* de quatro autores conhecidos como **Gang of Four (GoF)**: Gamma, Helm, Johnson e Vlissides.
+- Consagrados em 1994 pelo livro *Design Patterns*, dos quatro autores conhecidos como **Gang of Four (GoF)**: Gamma, Helm, Johnson e Vlissides.
 - São **23 padrões clássicos**, divididos em 3 famílias:
   - **Criacionais** — como objetos são criados (ex.: Singleton, Factory).
   - **Estruturais** — como objetos se compõem (ex.: Adapter, Decorator).
   - **Comportamentais** — como objetos colaboram e trocam responsabilidades (ex.: Observer, **Strategy**, State).
 - Strategy é **comportamental**. Trata de *como* um objeto faz uma coisa — e permite trocar esse "como" sem mexer no objeto.
 
-### 1.3. Analogia (40s)
-
-> "Pensem numa receita de bolo. O padrão é a *receita* — não é o bolo pronto. Dois padeiros podem seguir a mesma receita e fazer bolos diferentes no final, com ingredientes locais, tamanho diferente. A receita guia, mas não obriga."
-
-### 1.4. O que padrão NÃO é (30s)
+### 1.3. O que padrão NÃO é (45s)
 
 - **Não é biblioteca** — você não importa "Strategy" de lugar nenhum, você *escreve* no seu código.
 - **Não é framework** — é independente de Spring, Quarkus, qualquer coisa.
@@ -67,25 +113,23 @@
 - **É vocabulário compartilhado** — quando você diz "aqui é Strategy", quem conhece o padrão entende em 3 segundos.
 
 **Transição pro próximo bloco:**
-> "Beleza, existe um catálogo de padrões. Mas por que isso importa *hoje*, em 2026? É o que vamos ver agora."
+> "Beleza, existe um catálogo de padrões há mais de 30 anos. Mas por que isso importa *hoje*, em 2026? É o que vamos ver agora."
 
 ---
 
-## Bloco 2 — Por que padrões importam hoje (5 min)
+## Bloco 2 — Por que padrões importam hoje (4,5 min)
 
 **Dois mini-blocos:** colaboração humana + realidade do agentic coding.
 
-### 2a. Colaboração humana (2 min)
+### 2a. Colaboração humana (1,5 min)
 
 **Fato central (mostrar no slide):**
 > *Em qualquer projeto real, você passa mais tempo **lendo** código do que **escrevendo**.*
 
-**Pontos a desenvolver:**
+**Pontos a desenvolver (rápido, são reforços — a "dor" já foi apresentada no Bloco 0):**
 
-- **Código é comunicação.** Num projeto com 5, 10, 50 devs, a pessoa que vai mexer no seu código em 2027 talvez nem te conheça. Padrão é **protocolo de comunicação** entre devs que nunca se viram.
-- **Reduz discussões.** Em code review, "usei Strategy aqui" substitui um parágrafo de explicação. Todo mundo que conhece o padrão já sabe o porquê.
-- **Facilita onboarding.** Dev novo entra no time, bate o olho num código com padrões conhecidos e se localiza muito mais rápido do que em código ad-hoc.
-- **Analogia:** é como conhecer o nome de peças de xadrez. Você não precisa explicar "aquela peça que anda em L" — é só dizer "cavalo".
+- **Código é comunicação.** Padrão é um **protocolo** entre devs que nunca se viram — reduz discussão em code review e facilita onboarding.
+- **Analogia curta:** é como conhecer o nome das peças de xadrez. Em vez de "aquela peça que anda em L", você diz "cavalo" — e a conversa fica imediata.
 
 **Pausa estratégica:**
 > "Até aqui é o argumento clássico. Mas em 2026 tem um motivo novo, e pra mim é o mais interessante."
@@ -324,14 +368,47 @@ Conecta o padrão clássico (1994) com a sintaxe moderna do Java — mostra que 
 - **Abstração vazia.** Se todas as suas "estratégias" fazem praticamente a mesma coisa com variação trivial, você não está usando Strategy — está usando uma interface pra constar.
 - **Escolher Strategy é uma decisão de design, não de dogma.** O padrão serve o projeto, não o contrário.
 
-### 5.3. Relação com outros padrões (20s — opcional, 1 slide)
+### 5.3. Relação com outros padrões (15s — opcional, 1 slide)
 
 - **Factory** costuma aparecer *junto* com Strategy — alguém precisa decidir *qual* estratégia instanciar, e esse alguém é frequentemente uma Factory.
-- **State** tem estrutura **idêntica** a Strategy, mas intenção diferente: State modela transições entre estados; Strategy troca algoritmos.
+- **State** — deixamos pra explicar em detalhe se der tempo ou se aparecer pergunta (ver Bloco 6).
 
-### 5.4. Agradecimento e Q&A (25s)
+### 5.4. Agradecimento, Q&A e gancho pro bônus (30s)
 
-> "Obrigado. Perguntas?"
+**Fala-guia:**
+> "Obrigado! Antes de abrir pra perguntas — uma pergunta que muita gente faz quando aprende Strategy é: *'qual a diferença entre Strategy e o padrão State, já que o diagrama deles é praticamente igual?'* Guardei essa resposta pro final. Então, se alguém tiver alguma pergunta sobre o que a gente mostrou, levanta a mão. [pausa para Q&A] E, se quiserem, a gente fecha mostrando essa distinção — é rapidinho."
+
+> **Intenção do gancho:** a pergunta "alguém tem dúvida?" sempre tem um vácuo. Esse gancho (a) faz ela parecer mais convidativa (já avisa que tem um extra), (b) te dá controle se ninguém perguntar — você mesmo pode dizer "então deixa eu mostrar essa curiosidade", e (c) mostra profundidade de preparo.
+
+---
+
+## Bloco 6 — [Reserva] Bônus: Strategy vs State (1,5 min)
+
+**Quando usar:** depois do "alguém tem perguntas?", seja como resposta a alguém que perguntou, seja como fechamento ativo se ninguém perguntar. Pensar este bloco como *reserva controlada*: se o Q&A for animado e consumir tempo, pode ser cortado; se houver silêncio, ele salva a apresentação.
+
+**Slide sugerido:** comparação lado a lado — duas colunas, cada uma com um diagrama UML simples (idênticos) e logo abaixo a intenção distinta. Ênfase visual: mesmo esqueleto, perguntas diferentes.
+
+### 6.1. A observação que dispara a dúvida (15s)
+
+> "Se vocês olharem o diagrama UML do Strategy e o do State lado a lado, eles são **praticamente idênticos**: um Context, uma interface, várias classes concretas. Então qual a diferença, afinal? A resposta está na **intenção**, não na estrutura."
+
+### 6.2. Strategy — o cliente escolhe (30s)
+
+- As estratégias geralmente **não se conhecem**. Cada `FreteCorreios`, `FreteJadlog`, `FreteRetirada` vive isolada.
+- Quem decide trocar é **o cliente** (ou uma Factory externa): *"use Correios agora; depois troque pra Jadlog"*.
+- **Pergunta que o padrão responde:** *"qual algoritmo eu uso pra esta execução?"*.
+- **Exemplo:** cálculo de frete — o usuário escolhe a transportadora, o `Carrinho` executa.
+
+### 6.3. State — o próprio objeto transita (30s)
+
+- Os estados **frequentemente se conhecem** — cada estado sabe pra qual próximo estado pode transicionar.
+- Quem decide trocar é **o próprio objeto dono do estado**, reagindo a eventos do ciclo de vida.
+- **Pergunta que o padrão responde:** *"em que momento do ciclo de vida eu estou agora?"*.
+- **Exemplo clássico:** um `Pedido` que passa de `Pendente` → `Pago` → `Enviado` → `Entregue`. O pedido dita as transições; o cliente externo só dispara eventos ("pagar", "enviar").
+
+### 6.4. Frase de fechamento (15s)
+
+> "Mesma estrutura, perguntas diferentes. Strategy pergunta *'qual algoritmo eu uso agora?'*. State pergunta *'em que momento do ciclo de vida estou?'*. Esse é o detalhe que separa os dois. Obrigado de novo, pessoal."
 
 ---
 
