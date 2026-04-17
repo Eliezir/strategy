@@ -146,7 +146,7 @@
     const scaler = document.getElementById('scaler');
     const sw = 960, sh = 540;
     const ww = window.innerWidth, wh = window.innerHeight;
-    const scale = Math.min(ww / sw, wh / sh, 2);
+    const scale = Math.min(ww / sw, wh / sh, 2) * 0.92;
     scaler.style.transform = `scale(${scale})`;
   }
 

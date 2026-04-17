@@ -88,23 +88,48 @@ Leia uma vez inteiro antes da apresentação. Releia apenas os slides do seu blo
 
 ---
 
-## Slide 7 — Bloco 1: O catálogo (padrões vizinhos)
+## Slide 7 — Bloco 1: Problemas recorrentes → padrões já têm nome
 
-**O que é:** 3 cards mostrando combinações clássicas — Strategy + Factory, Strategy + Singleton, Strategy dentro de State.
+**O que é:** extensão direta do slide 6 ("padrões são soluções nomeadas pra problemas recorrentes"). Aqui a ideia sai do abstrato: **4 cards em grid 2×2**, cada um com uma "dor" que todo dev encontra (escrita em primeira pessoa, como um desabafo), e o padrão da GoF que nomeia a solução. Strategy aparece destacado (borda esmeralda) porque é o padrão que vamos destrinchar no resto da apresentação.
 
-**Contexto:**
-- Este slide existe pra desmontar a ideia de que "cada padrão é uma ilha". Na prática, padrões aparecem **em conjunto** quase sempre. Um Strategy raramente existe sozinho no código.
-- **Strategy + Factory**: quem cria a Strategy certa? Alguém precisa decidir "hoje vamos usar FreteCorreios ou FreteJadlog". Essa decisão normalmente vem de:
-  - Configuração (lê do `application.yml`).
-  - Perfil do usuário (usuário premium = estratégia X).
-  - Regra de negócio (CEP de SP = Loggi, resto = Correios).
-  - Essa "lógica de escolha" encapsulada é um Factory.
-- **Strategy + Singleton**: se a estratégia é *stateless* — ou seja, ela só calcula, não guarda estado — não faz sentido instanciar uma nova a cada chamada. Uma única instância pra toda a aplicação basta. Singleton aparece naturalmente. Exemplo: `FreteCorreios` não guarda nada entre chamadas, então `INSTANCE` static final é uma escolha razoável.
-- **Strategy dentro de State**: aqui é mais sutil. State é quando um objeto muda comportamento conforme seu estado interno (ex.: máquina de pedido: `Novo → Pago → Enviado → Entregue` — cada estado aceita ações diferentes). Cada estado pode usar uma Strategy diferente internamente. Exemplo: estado `Enviado` usa uma estratégia de rastreamento; `Entregue` usa outra. Mesma estrutura (classe implementando interface comum), intenção diferente (estado vs. algoritmo).
-- **Padrões vs. biblioteca vs. framework**:
-  - *Biblioteca* = código que você chama (ex.: Apache Commons).
-  - *Framework* = código que chama você (ex.: Spring — você preenche os buracos).
-  - *Padrão* = nem um nem outro. É uma **ideia nomeada**. Você implementa, não importa (muito).
+**Contexto pra quem apresenta:**
+- **A tese**: o catálogo da GoF não é teoria de laboratório — é um *índice de dores* que quem programa já enfrenta há 30+ anos. A pessoa ouviu no slide anterior que "padrão = solução nomeada de problema recorrente". Aqui ela **vê**, em linguagem natural, quais são esses problemas concretos.
+- **Os 4 problemas destrinchados** (cada card do slide):
+
+  **Strategy — "Preciso trocar o algoritmo sem mexer em quem chama."**
+  Situação típica: você tem um `Carrinho` que precisa calcular frete, e existem 3 transportadoras. Amanhã vira 5. Sem Strategy, cada transportadora nova exige editar o `Carrinho`. Com Strategy, o `Carrinho` nunca muda — só entram classes novas que implementam o contrato. É o assunto do Bloco 3 e 4.
+
+  **Observer — "Quero avisar vários lugares quando um dado mudar."**
+  Situação típica: a tela do perfil do usuário aparece em 3 lugares diferentes da app. Quando o usuário muda a foto, as 3 telas precisam atualizar. Sem Observer, cada tela consulta o servidor periodicamente (polling) ou vira espaguete de callbacks. Com Observer, o modelo publica "foto mudou" e quem se inscreveu recebe. É o padrão por baixo do `useState` do React, dos event listeners do DOM, de todo sistema pub/sub.
+
+  **Singleton — "Preciso de uma única instância compartilhada por toda a app."**
+  Situação típica: configurações da aplicação (variáveis de ambiente, URL do banco, chave de API). Não faz sentido criar um objeto `Config` novo toda vez — todo mundo precisa do mesmo. Sem Singleton, você passa o `Config` como parâmetro de 50 métodos. Com Singleton, chama `Config.getInstance()`. Pooling de conexão, cache, logger — todos são Singleton na prática.
+
+  **Adapter — "Quero juntar classes que não nasceram pra conversar."**
+  Situação típica: sua app recebe dados de uma API externa que devolve em um formato (XML em camelCase), mas seu código trabalha com outro (JSON em snake_case). Sem Adapter, você espalha conversão em todo lugar. Com Adapter, existe uma classe no meio que traduz — e o resto do código não sabe que existe API externa. Aparece em integrações, legados, drivers de banco.
+
+- **Por que esses 4 e não outros**:
+  - **Strategy** — é o tema da apresentação. Obrigatório estar aqui.
+  - **Observer** — provavelmente o segundo mais comum; quem já mexeu em React/Vue usa sem saber.
+  - **Singleton** — o mais famoso, todo mundo já ouviu falar. Inclusão cria sensação de "ah, já vi esse nome".
+  - **Adapter** — mais "estrutural" (família diferente de Strategy/Observer/Singleton). Mostra que o catálogo é diverso — problemas de algoritmo, de comunicação, de criação e de integração.
+
+- **Strategy destacado em verde**: visualmente marca o padrão que a apresentação vai aprofundar. O público pega rápido "ah, dos 4 aqui, o que vamos ver é esse". Cria gancho natural pro próximo slide (Strategy — intenção).
+
+- **Entrega ideal**:
+  - Leia cada problema em voz alta *como se fosse um desabafo*. As aspas são intencionais — é o dev murmurando consigo mesmo. Essa leitura gera identificação: "sim, eu já pensei isso".
+  - Pausa curta depois do problema, antes de dizer o nome do padrão. Deixa o público tentar adivinhar.
+  - No último, amarre: "Strategy é o que vocês vão ouvir daqui a pouco. Os outros três ficam de gancho pra quem quiser se aprofundar depois."
+
+- **Perguntas prováveis**:
+  - "Só tem esses 4 padrões?" — não, são 23 no catálogo original da GoF, dezenas mais foram adicionados depois. Esses 4 são os mais reconhecíveis no início da jornada.
+  - "Eu consigo resolver sem usar padrão?" — consegue. Padrão não é obrigação, é atalho. Você ganha tempo por não reinventar; ganha comunicação por usar nome já conhecido. Em projeto de 10 linhas é over-engineering; em projeto de 10 mil linhas é sanidade mental.
+  - "E se o problema que eu tenho não está no catálogo?" — aí você cria solução e, se ela se repetir em vários projetos, pode virar um padrão novo. Foi assim que vieram os padrões de microserviços (CQRS, Circuit Breaker) — surgiram da prática.
+
+- **Amarração com o resto**:
+  - **Slide 6** (anterior): lá a gente disse que padrão é "solução nomeada". Aqui mostra que os nomes são reais e úteis.
+  - **Slide 12** (Strategy — intenção): o próximo zoom específico em Strategy. Este slide 7 serve como "teaser estendido".
+  - **Slide 23** (quando NÃO usar): volta com a ideia de que padrão não é obrigação — fecha o arco.
 
 ---
 

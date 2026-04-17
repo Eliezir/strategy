@@ -61,11 +61,11 @@ html, body {
 /* Slides */
 .slide {
   position: absolute; width: 960px; height: 540px;
-  overflow: hidden; border-radius: 6px;
+  overflow: hidden; border-radius: 14px;
   opacity: 0; transform: translateX(40px);
   transition: opacity .45s ease, transform .45s ease;
   pointer-events: none;
-  box-shadow: 0 32px 80px rgba(0,0,0,.7);
+  box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 4px 16px rgba(0,0,0,.4);
 }
 .slide.active     { opacity: 1; transform: translateX(0); pointer-events: auto; }
 .slide.exit-left  { opacity: 0; transform: translateX(-40px); }
@@ -1082,158 +1082,158 @@ code.inline {
 .theme-toggle .icon-moon { display: none; }
 .theme-toggle .icon-sun  { display: block; }
 
-/* ── Light theme ── */
+/* ── Light theme · slide branco "flutuando" em cinza neutro ── */
 [data-theme="light"] {
-  --navy:  #eef2f9;   /* s-dark — sutil, não branco puro, pra cards brancos se destacarem */
-  --navy2: #e3e9f3;   /* s-dark2 */
-  --navy3: #d4dcea;   /* s-mid — tinta clara mas perceptível */
+  --navy:  #ffffff;   /* s-dark — slide principal, branco puro */
+  --navy2: #fafbfd;   /* s-dark2 — whisper gray */
+  --navy3: #f1f4f8;   /* s-mid — cinza claro sutil */
 
-  --ink:   #0a101f;   /* quase-preto pra máxima legibilidade */
-  --ink2:  #1b2840;
-  --muted: #3b4a63;   /* >7:1 em bg claro */
-  --border: #8fa2bd;  /* borda forte — antes #cbd5e1 desaparecia */
+  --ink:   #1a1f2c;   /* neutro quase-preto */
+  --ink2:  #2d3545;   /* cinza escuro pra secundário */
+  --muted: #5c6576;   /* cinza médio */
+  --border: #c7ced9;  /* borda neutra suave */
 
-  --accent:  #065f46;  /* accent escurecido (AAA em bg branco) */
-  --accent2: #047857;
-  --accent3: #059669;
-  --violet:  #5b21b6; --violet2: #6d28d9;
-  --red:     #991b1b; --red2:    #b91c1c;
-  --amber:   #92400e; --amber2:  #b45309;
+  --accent:  #16593a;
+  --accent2: #1d6b42;
+  --accent3: #25a05d;
+  --violet:  #6d28d9; --violet2: #7e3af2;
+  --red:     #a62020; --red2:    #c53030;
+  --amber:   #9a4910; --amber2:  #b45309;
 
-  --code-bg:      #edf1f8;
-  --code-text:    #0a101f;
-  --code-keyword: #6b21a8;
+  --code-bg:      #eef2f7;
+  --code-text:    #1a1f2c;
+  --code-keyword: #7e22ce;
   --code-type:    #0e7490;
-  --code-string:  #92400e;
-  --code-number:  #9d174d;
-  --code-comment: #475569;
-  --code-method:  #1e40af;
-  --code-anno:    #9a3412;
+  --code-string:  #a16207;
+  --code-number:  #be185d;
+  --code-comment: #64748b;
+  --code-method:  #1d4ed8;
+  --code-anno:    #c2410c;
 }
 
-[data-theme="light"] body { background: #c9d3e3; }
-[data-theme="light"] .slide { box-shadow: 0 18px 52px rgba(10,16,31,.18), 0 2px 6px rgba(10,16,31,.08); }
+[data-theme="light"] body { background: #cad1dc; }
+[data-theme="light"] .slide { box-shadow: 0 24px 60px rgba(26,31,44,.16), 0 4px 16px rgba(26,31,44,.08); }
 [data-theme="light"] .s-dark  { background: var(--navy);  color: var(--ink); }
 [data-theme="light"] .s-dark2 { background: var(--navy2); color: var(--ink); }
 [data-theme="light"] .s-mid   { background: var(--navy3); color: var(--ink); }
 
-[data-theme="light"] .corner-num { color: var(--ink); opacity: .12; }
-[data-theme="light"] #counter { color: rgba(10,16,31,.6); letter-spacing: .12em; }
+[data-theme="light"] .corner-num { color: var(--ink); opacity: .09; }
+[data-theme="light"] #counter { color: rgba(26,31,44,.55); letter-spacing: .12em; }
 
 [data-theme="light"] .nav-btn {
-  background: rgba(10,16,31,.08); border-color: rgba(10,16,31,.22); color: var(--ink);
+  background: rgba(26,31,44,.07); border-color: rgba(26,31,44,.18); color: var(--ink);
 }
-[data-theme="light"] .nav-btn:hover { background: rgba(10,16,31,.18); border-color: rgba(10,16,31,.35); }
+[data-theme="light"] .nav-btn:hover { background: rgba(26,31,44,.14); border-color: rgba(26,31,44,.3); }
 
-/* Cards, boxes — branco puro com sombra pra destaque no bg tintado */
+/* Cards, boxes — cinza bem claro sobre o slide branco */
 [data-theme="light"] .card,
 [data-theme="light"] .q-card,
 [data-theme="light"] .def-box,
 [data-theme="light"] .big-stat,
 [data-theme="light"] .reco-card,
 [data-theme="light"] .orch-open-btn {
-  background: #ffffff;
-  border-color: #9eb0c9;
-  box-shadow: 0 1px 2px rgba(10,16,31,.06), 0 4px 12px rgba(10,16,31,.07);
+  background: #f4f7fb;
+  border-color: #d2dae5;
+  box-shadow: 0 1px 2px rgba(26,31,44,.04), 0 2px 8px rgba(26,31,44,.05);
 }
 [data-theme="light"] .reco-card:hover,
 [data-theme="light"] .orch-open-btn:hover {
-  background: #f6f9ff;
-  box-shadow: 0 10px 28px rgba(10,16,31,.14);
+  background: #ebf0f7;
+  box-shadow: 0 6px 20px rgba(26,31,44,.1);
 }
-[data-theme="light"] .reco-url { border-top-color: rgba(10,16,31,.16); }
+[data-theme="light"] .reco-url { border-top-color: rgba(26,31,44,.14); }
 
-/* Code: bg mais escuro que o slide + borda visível */
+/* Code: bg cinza claro, borda neutra */
 [data-theme="light"] .code-block {
   background: var(--code-bg);
-  border-color: #8fa2bd;
+  border-color: #c7ced9;
 }
 [data-theme="light"] code.inline {
-  background: rgba(5,150,105,.12);
-  color: #065f46;
-  border: 1px solid rgba(5,150,105,.22);
+  background: rgba(22,89,58,.08);
+  color: #16593a;
+  border: 1px solid rgba(22,89,58,.18);
 }
 
-/* Pair demo — bg tintado, pane branca com borda */
+/* Pair demo */
 [data-theme="light"] .pair-demo {
-  background: var(--navy2);
-  border-color: #8fa2bd;
+  background: #f1f4f8;
+  border-color: #c7ced9;
 }
 [data-theme="light"] .pair-pane {
   background: #ffffff;
-  border-color: #9eb0c9;
+  border-color: #d2dae5;
 }
-[data-theme="light"] .pair-header { border-bottom-color: rgba(10,16,31,.12); }
+[data-theme="light"] .pair-header { border-bottom-color: rgba(26,31,44,.11); }
 
-/* Step note — aparece no bg claro */
+/* Step note */
 [data-theme="light"] .step-note {
-  background: linear-gradient(135deg, #ffffff, #eef2f8);
-  border-color: #9eb0c9;
+  background: linear-gradient(135deg, #f4f7fb, #e7edf5);
+  border-color: #d2dae5;
   color: var(--ink2);
 }
 [data-theme="light"] .step-note strong { color: var(--ink); }
 
-/* Step indicator — mantém visual escuro pra destacar */
+/* Step indicator — pílula discreta */
 [data-theme="light"] .step-indicator {
-  background: rgba(10,16,31,.88);
-  border-color: rgba(10,16,31,.3);
-  color: rgba(255,255,255,.85);
+  background: rgba(26,31,44,.82);
+  border-color: rgba(26,31,44,.24);
+  color: rgba(255,255,255,.88);
 }
 [data-theme="light"] .step-indicator kbd {
-  background: rgba(255,255,255,.18);
-  color: #6ee7b7;
+  background: rgba(255,255,255,.16);
+  color: #8fd9a8;
 }
 
 /* UML boxes */
-[data-theme="light"] .uml-box { background: #ffffff; border-color: var(--accent); color: var(--ink); }
-[data-theme="light"] .uml-box.concrete { background: #e3e9f3; border-color: #8fa2bd; }
+[data-theme="light"] .uml-box { background: #f4f7fb; border-color: var(--accent); color: var(--ink); }
+[data-theme="light"] .uml-box.concrete { background: #fafbfd; border-color: #c7ced9; }
 
 /* Pills */
 [data-theme="light"] .pill-muted {
-  background: rgba(10,16,31,.08);
-  border-color: rgba(10,16,31,.2);
+  background: rgba(26,31,44,.08);
+  border-color: rgba(26,31,44,.18);
   color: var(--ink2);
 }
 
 /* Terminal header dots (fora do terminal preto) */
-[data-theme="light"] .terminal-header::before { color: rgba(10,16,31,.35); }
+[data-theme="light"] .terminal-header::before { color: rgba(26,31,44,.3); }
 
 /* ─── TOC panel no tema claro ─── */
 [data-theme="light"] .toc-toggle,
 [data-theme="light"] .theme-toggle {
-  background: rgba(255,255,255,.92);
-  border-color: rgba(10,16,31,.2);
+  background: rgba(255,255,255,.94);
+  border-color: rgba(26,31,44,.18);
   color: var(--ink);
-  box-shadow: 0 2px 6px rgba(10,16,31,.08);
+  box-shadow: 0 2px 6px rgba(26,31,44,.08);
 }
 [data-theme="light"] .toc-toggle:hover,
 [data-theme="light"] .theme-toggle:hover {
   background: #ffffff;
-  border-color: rgba(10,16,31,.35);
+  border-color: rgba(26,31,44,.3);
 }
 [data-theme="light"] .toc-panel {
-  background: rgba(255,255,255,.97);
-  border-left: 1px solid rgba(10,16,31,.14);
-  box-shadow: -14px 0 40px rgba(10,16,31,.14);
+  background: rgba(252,253,255,.97);
+  border-left: 1px solid rgba(26,31,44,.13);
+  box-shadow: -14px 0 40px rgba(26,31,44,.14);
 }
 [data-theme="light"] .toc-header {
   color: var(--ink);
-  border-bottom-color: rgba(10,16,31,.1);
+  border-bottom-color: rgba(26,31,44,.1);
 }
 [data-theme="light"] .toc-list {
-  scrollbar-color: rgba(10,16,31,.22) transparent;
+  scrollbar-color: rgba(26,31,44,.18) transparent;
 }
-[data-theme="light"] .toc-list::-webkit-scrollbar-thumb { background: rgba(10,16,31,.2); }
-[data-theme="light"] .toc-list::-webkit-scrollbar-thumb:hover { background: rgba(5,150,105,.5); }
+[data-theme="light"] .toc-list::-webkit-scrollbar-thumb { background: rgba(26,31,44,.18); }
+[data-theme="light"] .toc-list::-webkit-scrollbar-thumb:hover { background: rgba(22,89,58,.5); }
 [data-theme="light"] .toc-item { color: var(--ink2); }
 [data-theme="light"] .toc-item:hover {
-  background: rgba(10,16,31,.05);
+  background: rgba(26,31,44,.05);
   color: var(--ink);
-  border-left-color: rgba(5,150,105,.55);
+  border-left-color: rgba(22,89,58,.5);
 }
 [data-theme="light"] .toc-item.active {
-  background: linear-gradient(to right, rgba(5,150,105,.18), rgba(5,150,105,.02));
-  color: #065f46;
+  background: linear-gradient(to right, rgba(22,89,58,.16), rgba(22,89,58,.02));
+  color: #16593a;
   border-left-color: var(--accent);
   font-weight: 600;
 }
@@ -1243,12 +1243,12 @@ code.inline {
 
 /* Carrossel figcaption — texto sobre gradient escuro, mantém claro */
 [data-theme="light"] .carousel-slide figcaption .label { color: #ffffff; }
-[data-theme="light"] .carousel-slide figcaption .sub   { color: #6ee7b7; }
-[data-theme="light"] .carousel-slide figcaption { border-top-color: rgba(52,211,153,.35); }
+[data-theme="light"] .carousel-slide figcaption .sub   { color: #8fd9a8; }
+[data-theme="light"] .carousel-slide figcaption { border-top-color: rgba(143,217,168,.38); }
 
 /* Capa radial gradient light override */
 [data-theme="light"] #s-capa .slide-inner {
-  background: radial-gradient(ellipse 80% 60% at 80% 30%, rgba(5,150,105,.1) 0%, transparent 60%), var(--navy) !important;
+  background: radial-gradient(ellipse 80% 60% at 80% 30%, rgba(22,89,58,.08) 0%, transparent 60%), var(--navy) !important;
 }
 
 /* ═══ Easter egg: pressione K no último slide ═══ */
@@ -1346,8 +1346,8 @@ code.inline {
 }
 
 [data-theme="light"] .kenji-egg {
-  background: radial-gradient(ellipse at center, rgba(247,248,251,.55) 0%, rgba(222,227,238,.85) 80%);
+  background: radial-gradient(ellipse at center, rgba(250,251,253,.55) 0%, rgba(202,209,220,.85) 80%);
 }
 [data-theme="light"] .kenji-modal {
-  background: linear-gradient(135deg, rgba(5,150,105,.08), rgba(16,185,129,.02)), var(--navy2);
+  background: linear-gradient(135deg, rgba(22,89,58,.08), rgba(37,160,93,.02)), var(--navy2);
 }

@@ -275,30 +275,57 @@
         <div class="corner-num">6</div>
       </div>
 
-      <!-- ═══ SLIDE 6 — BLOCO 1.3: UM CATÁLOGO QUE SE COMPLEMENTA ═══ -->
+      <!-- ═══ SLIDE 6 — BLOCO 1.3: PROBLEMAS RECORRENTES → PADRÕES ═══ -->
       <div class="slide s-mid">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 1 · O catálogo</div>
-          <h2 class="section">Um padrão <em style="color:var(--accent2);">nunca</em> vive sozinho</h2>
+          <h2 class="section">Problemas recorrentes — <em style="color:var(--accent2);font-style:normal;">padrões já têm nome</em></h2>
           <div class="divider"></div>
-          <p style="font-size:14px;color:var(--ink2);line-height:1.55;max-width:760px;margin-bottom:20px;">
-            Os 23 padrões da GoF formam um <strong style="color:var(--ink);">catálogo interligado</strong>. Eles se combinam, se referenciam, e aprender um abre a porta pros outros. Alguns vizinhos naturais do Strategy:
+          <p style="font-size:14px;color:var(--ink2);line-height:1.6;max-width:840px;margin-bottom:18px;">
+            O catálogo da GoF existe porque quem programa cruza os <strong style="color:var(--ink);">mesmos problemas</strong> em projetos completamente diferentes. Abaixo, quatro dores que <em>todo</em> dev encontra cedo ou tarde — e o padrão que já nomeia a solução.
           </p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-            <div class="card">
-              <div class="card-title">Strategy + Factory</div>
-              <div class="card-body">Alguém precisa decidir <em>qual</em> estratégia instanciar. Factory costuma ser quem faz essa escolha — lendo config, perfil do usuário ou regra de negócio.</div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0;">
+            <div class="card" style="border-color:var(--accent);border-left:3px solid var(--accent);display:flex;flex-direction:column;gap:8px;">
+              <div class="card-title" style="color:var(--accent3);">O problema</div>
+              <div style="font-size:13px;color:var(--ink2);font-style:italic;line-height:1.5;">"Preciso trocar o algoritmo sem mexer em quem chama."</div>
+              <div style="margin-top:auto;display:flex;align-items:baseline;gap:10px;">
+                <span style="font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">→ padrão</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--accent2);font-style:italic;line-height:1;">Strategy</span>
+              </div>
             </div>
-            <div class="card">
-              <div class="card-title">Strategy + Singleton</div>
-              <div class="card-body">Se a estratégia é <em>stateless</em> (só calcula), uma instância basta pra toda a app — Singleton aparece naturalmente.</div>
+
+            <div class="card" style="display:flex;flex-direction:column;gap:8px;">
+              <div class="card-title">O problema</div>
+              <div style="font-size:13px;color:var(--ink2);font-style:italic;line-height:1.5;">"Quero avisar vários lugares quando um dado mudar — sem eles ficarem perguntando."</div>
+              <div style="margin-top:auto;display:flex;align-items:baseline;gap:10px;">
+                <span style="font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">→ padrão</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--ink);font-style:italic;line-height:1;">Observer</span>
+              </div>
             </div>
-            <div class="card">
-              <div class="card-title">Strategy dentro de State</div>
-              <div class="card-body">Cada estado de uma máquina pode ter sua própria família de estratégias. Mesma estrutura, encaixes diferentes (veremos a distinção no bônus).</div>
+
+            <div class="card" style="display:flex;flex-direction:column;gap:8px;">
+              <div class="card-title">O problema</div>
+              <div style="font-size:13px;color:var(--ink2);font-style:italic;line-height:1.5;">"Preciso de uma única instância compartilhada por toda a aplicação."</div>
+              <div style="margin-top:auto;display:flex;align-items:baseline;gap:10px;">
+                <span style="font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">→ padrão</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--ink);font-style:italic;line-height:1;">Singleton</span>
+              </div>
+            </div>
+
+            <div class="card" style="display:flex;flex-direction:column;gap:8px;">
+              <div class="card-title">O problema</div>
+              <div style="font-size:13px;color:var(--ink2);font-style:italic;line-height:1.5;">"Quero juntar classes que não nasceram pra conversar entre si."</div>
+              <div style="margin-top:auto;display:flex;align-items:baseline;gap:10px;">
+                <span style="font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">→ padrão</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--ink);font-style:italic;line-height:1;">Adapter</span>
+              </div>
             </div>
           </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:22px;font-style:italic;text-align:center;">Padrões são <strong style="color:var(--ink2);">vocabulário compartilhado</strong>, não biblioteca nem framework — e fazem mais sentido em conjunto do que isolados.</p>
+
+          <!-- <p style="font-size:12px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center;">
+            <strong style="color:var(--accent2);font-style:normal;">Strategy</strong> é um dos 23 — é nele que a gente vai focar. Os outros seguem a mesma lógica: <strong style="color:var(--ink2);font-style:normal;">problema conhecido → solução com nome</strong>.
+          </p> -->
         </div>
         <div class="corner-num">7</div>
       </div>
@@ -952,7 +979,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
 
     <div class="toc-section">Bloco 1 — Padrões de projeto</div>
     <a class="toc-item" data-goto="5">6 · Definição + GoF</a>
-    <a class="toc-item" data-goto="6">7 · O catálogo</a>
+    <a class="toc-item" data-goto="6">7 · Problemas → padrões</a>
 
     <div class="toc-section">Bloco 2 — Por que importam hoje</div>
     <a class="toc-item" data-goto="7">8 · Colaboração humana</a>
