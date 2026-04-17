@@ -109,7 +109,707 @@
         <div class="corner-num">2</div>
       </div>
 
-      <!-- ═══ [SLIDES DE CONTEÚDO SERÃO ADICIONADOS AQUI] ═══ -->
+      <!-- ═══ SLIDE 3 — BLOCO 0.2: A DOR REAL (código feio) ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 0 · A dor real</div>
+          <h2 class="section">Alguém já escreveu — ou leu — algo assim?</h2>
+          <div class="divider"></div>
+          <pre class="code-block bad" style="font-size:11px;flex:1;"><span class="tok-kw">public class</span> <span class="tok-ty">Processador</span> {
+
+    <span class="tok-kw">public void</span> <span class="tok-mt">executar</span>(<span class="tok-ty">String</span> feature, <span class="tok-ty">Request</span> req) {
+        <span class="tok-kw">switch</span> (feature) {
+            <span class="tok-kw">case</span> <span class="tok-str">"feature1"</span>:
+                <span class="tok-mt">validar</span>(req); <span class="tok-mt">salvar</span>(req); <span class="tok-mt">notificar</span>(req);
+                <span class="tok-kw">break</span>;
+            <span class="tok-kw">case</span> <span class="tok-str">"feature2"</span>:
+                <span class="tok-mt">validar</span>(req); <span class="tok-mt">gerarRelatorio</span>(req);
+                <span class="tok-kw">break</span>;
+            <span class="tok-kw">case</span> <span class="tok-str">"feature3"</span>:
+                <span class="tok-mt">aplicarDesconto</span>(req); <span class="tok-mt">salvar</span>(req);
+                <span class="tok-kw">break</span>;
+            <span class="tok-kw">case</span> <span class="tok-str">"feature4"</span>: <span class="tok-cmt">// ...</span>
+                <span class="tok-kw">break</span>;
+            <span class="tok-kw">case</span> <span class="tok-str">"feature5"</span>: <span class="tok-cmt">// ...</span>
+                <span class="tok-kw">break</span>;
+            <span class="tok-cmt">// ... e mais 10 cases ...</span>
+            <span class="tok-kw">default</span>:
+                <span class="tok-kw">throw new</span> <span class="tok-ty">IllegalArgumentException</span>(<span class="tok-str">"Feature desconhecida: "</span> + feature);
+        }
+    }
+}</pre>
+          <p style="font-size:13px;color:var(--muted);margin-top:12px;font-style:italic;">Nem precisa explicar o que faz. O que você está sentindo já é a resposta.</p>
+        </div>
+        <div class="corner-num">3</div>
+      </div>
+
+      <!-- ═══ SLIDE 4 — BLOCO 0.3: A REALIDADE DOS PROJETOS ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 0 · Por que isto acontece</div>
+          <h2 class="section">Ninguém escreve assim de propósito</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:22px;">
+            <div class="card">
+              <div class="card-title">Início</div>
+              <div class="card-body">Projeto raramente nasce com escopo fechado. Você começa com <strong style="color:var(--ink);">3 casos bem definidos</strong>.</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Meio do caminho</div>
+              <div class="card-body">Nem o próprio cliente sabe o que quer. Ele usa, pede ajustes, aparece feature nova. Depois outra. <strong style="color:var(--ink);">E outra</strong>.</div>
+            </div>
+            <div class="card">
+              <div class="card-title">6 meses depois</div>
+              <div class="card-body">Aquele <code class="inline">switch</code> de 3 virou <strong style="color:var(--ink);">15</strong>. Cada feature nova exige editar a mesma classe. Mudar uma coisa quebra outra.</div>
+            </div>
+          </div>
+          <div class="def-box" style="margin-bottom:0;">
+            <p class="def-text">"Isto não é incompetência — é a natureza do negócio de software. Padrões de projeto existem <em style="color:var(--accent2);">exatamente</em> porque essa dor é inevitável."</p>
+          </div>
+        </div>
+        <div class="corner-num">4</div>
+      </div>
+
+      <!-- ═══ SLIDE 5 — BLOCO 1.1 + 1.2: DEFINIÇÃO + FAMÍLIAS GoF ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 1 · Fundamentos</div>
+          <h2 class="section">O que são padrões de projeto</h2>
+          <div class="divider"></div>
+          <div class="def-box">
+            <p class="def-text">"Soluções reutilizáveis e nomeadas para problemas que aparecem repetidamente no design de sistemas orientados a objetos."</p>
+            <p class="def-src">Um padrão é a <strong style="color:var(--accent2);">receita</strong> — não o bolo. Guia, não obriga.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+            <div class="card">
+              <div class="card-title">Criacionais</div>
+              <div class="card-body">Como objetos são <strong style="color:var(--ink);">criados</strong>.<br><span style="color:var(--muted);font-size:11.5px;">Ex.: Singleton, Factory</span></div>
+            </div>
+            <div class="card">
+              <div class="card-title">Estruturais</div>
+              <div class="card-body">Como objetos se <strong style="color:var(--ink);">compõem</strong>.<br><span style="color:var(--muted);font-size:11.5px;">Ex.: Adapter, Decorator</span></div>
+            </div>
+            <div class="card" style="border-color:var(--accent);">
+              <div class="card-title" style="color:var(--accent3);">Comportamentais</div>
+              <div class="card-body">Como objetos <strong style="color:var(--ink);">colaboram</strong>.<br><span style="color:var(--muted);font-size:11.5px;">Ex.: Observer, <strong style="color:var(--accent2);">Strategy</strong>, State</span></div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:14px;text-align:right;font-style:italic;">Gang of Four (Gamma, Helm, Johnson, Vlissides) · 1994 · 23 padrões clássicos</p>
+        </div>
+        <div class="corner-num">5</div>
+      </div>
+
+      <!-- ═══ SLIDE 6 — BLOCO 1.3: O QUE PADRÃO NÃO É ═══ -->
+      <div class="slide s-mid">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 1 · Desmistificando</div>
+          <h2 class="section">O que um padrão não é</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px;">
+            <ul class="x-list">
+              <li><div><strong>Não é biblioteca.</strong> Você não <code class="inline">import</code> Strategy de lugar nenhum — você escreve no seu código.</div></li>
+              <li><div><strong>Não é framework.</strong> Independente de Spring, Quarkus, qualquer tecnologia.</div></li>
+              <li><div><strong>Não é obrigação.</strong> Usar padrão em código que não precisa é over-engineering.</div></li>
+            </ul>
+            <ul class="x-list">
+              <li class="check"><div><strong>É vocabulário compartilhado.</strong> Quando você diz "aqui é Strategy", quem conhece entende em 3 segundos o que você fez — e, mais importante, <em style="color:var(--accent2);">por quê</em>.</div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="corner-num">6</div>
+      </div>
+
+      <!-- ═══ SLIDE 7 — BLOCO 2a: COLABORAÇÃO HUMANA ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 2 · Colaboração humana</div>
+          <h2 class="section">Por que padrões importam hoje</h2>
+          <div class="divider"></div>
+          <p class="key-quote" style="margin:10px 0 22px;">
+            Em qualquer projeto real, você passa mais tempo
+            <span class="hl">lendo</span> código do que <span class="hl">escrevendo</span>.
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="card">
+              <div class="card-title">Código é comunicação</div>
+              <div class="card-body">Padrão é um <strong style="color:var(--ink);">protocolo</strong> entre devs que nunca se viram. Reduz discussão em code review e acelera onboarding.</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Analogia — peças de xadrez</div>
+              <div class="card-body">Em vez de "aquela peça que anda em L", você diz <strong style="color:var(--ink);">"cavalo"</strong>. Um nome comum torna a conversa imediata.</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--muted);margin-top:20px;font-style:italic;">Até aqui é o argumento clássico. Em 2026 existe um motivo novo — e é o mais interessante.</p>
+        </div>
+        <div class="corner-num">7</div>
+      </div>
+
+      <!-- ═══ SLIDE 8 — BLOCO 2b: O QUE É AGENTIC CODING ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 2 · Realidade 2026</div>
+          <h2 class="section">Agentic Coding</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:24px;">
+            <div>
+              <div class="def-box">
+                <p class="def-text">Modelo de desenvolvimento em que você descreve a <span style="color:var(--accent2);font-style:normal;">intenção</span> — "adicione suporte a Pix" — e um agente autônomo lê o código, planeja, edita, testa e commita.</p>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span class="pill pill-accent">Cursor</span>
+                <span class="pill pill-accent">Claude Code</span>
+                <span class="pill pill-accent">GitHub Copilot Agent</span>
+                <span class="pill pill-accent">Windsurf</span>
+              </div>
+            </div>
+            <div class="big-stat">
+              <div class="num">40<span class="unit">%</span></div>
+              <div class="stat-label">das aplicações empresariais vão incorporar agentes de IA <strong style="color:var(--ink);">até 2026</strong></div>
+              <div class="stat-src">era &lt; 5% em 2025 · Gartner</div>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">8</div>
+      </div>
+
+      <!-- ═══ SLIDE 9 — BLOCO 2b: 3 RAZÕES — PADRÕES IMPORTAM MAIS COM AGENTES ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 2 · Tese central</div>
+          <h2 class="section">Padrões importam <em style="color:var(--accent2);font-style:normal;">mais</em> com agentes — não menos</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:4px;">
+            <div class="q-card">
+              <div class="q-num">1</div>
+              <div>
+                <div class="q-label">Reconhecimento</div>
+                <div class="q-text">LLMs foram treinados em milhões de linhas open-source. Strategy é reconhecido <strong style="color:var(--ink);">na hora</strong> — o agente sabe onde encaixar.</div>
+              </div>
+            </div>
+            <div class="q-card">
+              <div class="q-num">2</div>
+              <div>
+                <div class="q-label">Menos contexto</div>
+                <div class="q-text">"Adicione Pix" num código com <code class="inline">PagamentoStrategy</code> = <strong style="color:var(--ink);">uma classe nova</strong>. Num <code class="inline">if/else</code> espalhado = ler 5 arquivos.</div>
+              </div>
+            </div>
+            <div class="q-card">
+              <div class="q-num">3</div>
+              <div>
+                <div class="q-label">Menos alucinação</div>
+                <div class="q-text">Estrutura nomeada <strong style="color:var(--ink);">ancora</strong> o raciocínio do agente. Menos contexto ruidoso = menos respostas inventadas.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">9</div>
+      </div>
+
+      <!-- ═══ SLIDE 10 — BLOCO 2b: FRASE-CHAVE ═══ -->
+      <div class="slide s-mid">
+        <div class="slide-inner" style="justify-content:center;align-items:flex-start;">
+          <div class="slide-tag">Bloco 2 · Frase da comunidade</div>
+          <h1 class="display" style="font-size:72px;line-height:1.08;max-width:840px;margin-top:20px;">
+            Frameworks <span style="color:var(--red2);font-style:italic;">mudam</span>.<br>
+            Padrões <span style="color:var(--accent2);font-style:italic;">persistem</span>.
+          </h1>
+          <div class="divider" style="margin-top:30px;"></div>
+          <p style="font-size:15px;color:var(--ink2);max-width:760px;line-height:1.6;">
+            Spring muda, Quarkus muda, o próprio Java muda. Mas o conceito de <strong style="color:var(--accent2);">"encapsular algoritmo em uma classe que implementa uma interface comum"</strong> é verdade em 1994, em 2026, e vai ser em 2040.
+          </p>
+          <p style="font-size:12px;color:var(--muted);margin-top:22px;font-style:italic;">Simon Willison e comunidade de agentic engineering · 2026</p>
+        </div>
+        <div class="corner-num">10</div>
+      </div>
+
+      <!-- ═══ SLIDE 11 — BLOCO 3.1: STRATEGY INTENÇÃO ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 3 · Strategy · Intenção</div>
+          <h2 class="section">O padrão Strategy</h2>
+          <div class="divider"></div>
+          <div class="def-box">
+            <p class="def-text">"Define uma família de algoritmos, encapsula cada um e os torna intercambiáveis. Strategy permite que o algoritmo varie <em style="color:var(--accent2);font-style:normal;">independentemente</em> dos clientes que o usam."</p>
+            <p class="def-src">Gamma, Helm, Johnson & Vlissides · <em>Design Patterns</em> (1994)</p>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+            <div class="card" style="border-left:3px solid var(--red);">
+              <div class="card-title" style="color:var(--red2);">O problema</div>
+              <div class="card-body">Objeto que se comporta de formas diferentes → vira <code class="inline">switch</code> gigante, acoplado, impossível de testar isolado. Viola o <strong style="color:var(--ink);">Open/Closed Principle</strong>.</div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--accent);">
+              <div class="card-title">A solução</div>
+              <div class="card-body">Cada algoritmo numa classe própria, atrás de uma interface comum. O Context escolhe — e pode <strong style="color:var(--ink);">trocar em runtime</strong> — sem saber qual implementação está usando.</div>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">11</div>
+      </div>
+
+      <!-- ═══ SLIDE 12 — BLOCO 3.3: UML ESTRUTURA ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 3 · Estrutura</div>
+          <h2 class="section">A estrutura do padrão</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:30px;align-items:center;margin-top:10px;">
+            <div class="uml-stack">
+              <div class="uml-row">
+                <div class="uml-box">
+                  <span class="uml-kind">Context</span>
+                  <span class="uml-name">Carrinho</span>
+                </div>
+              </div>
+              <div class="uml-line dashed" style="height:26px;"></div>
+              <div class="uml-row">
+                <div class="uml-box interface">
+                  <span class="uml-kind">«interface»</span>
+                  <span class="uml-name">Strategy</span>
+                </div>
+              </div>
+              <div class="uml-fanout"></div>
+              <div class="uml-bracket" style="width:340px;"></div>
+              <div class="uml-row" style="gap:8px;margin-top:0;">
+                <div class="uml-box concrete"><span class="uml-kind">concrete</span><span class="uml-name">Strategy A</span></div>
+                <div class="uml-box concrete"><span class="uml-kind">concrete</span><span class="uml-name">Strategy B</span></div>
+                <div class="uml-box concrete"><span class="uml-kind">concrete</span><span class="uml-name">Strategy C</span></div>
+              </div>
+            </div>
+            <div>
+              <ul class="arrow-list" style="gap:12px;">
+                <li><div><strong style="color:var(--ink);">Context</strong> — guarda referência a uma Strategy. Delega a execução sem conhecer a implementação concreta.</div></li>
+                <li><div><strong style="color:var(--ink);">Strategy</strong> (interface) — contrato único (1 ou poucos métodos).</div></li>
+                <li><div><strong style="color:var(--ink);">ConcreteStrategy</strong> — cada algoritmo em sua própria classe.</div></li>
+                <li><div>Pra trocar em runtime: passar outra <code class="inline">ConcreteStrategy</code>. Sem recompilar o Context.</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">12</div>
+      </div>
+
+      <!-- ═══ SLIDE 13 — BLOCO 3.4: POLIMORFISMO COM NOME ═══ -->
+      <div class="slide s-mid">
+        <div class="slide-inner" style="justify-content:center;">
+          <div class="slide-tag">Bloco 3 · Essência</div>
+          <h2 class="section" style="font-size:44px;">Strategy é polimorfismo <em style="color:var(--accent2);">com nome e intenção</em></h2>
+          <div class="divider"></div>
+          <p style="font-size:15px;color:var(--ink2);max-width:760px;line-height:1.7;margin-top:8px;">
+            Muita gente aprende polimorfismo em POO e depois aprende Strategy, e pensa "mas isso é só polimorfismo".
+            <span style="color:var(--ink);">É — mas com uma intenção <strong style="color:var(--accent2);">nomeada</strong>.</span>
+          </p>
+          <p style="font-size:15px;color:var(--ink2);max-width:760px;line-height:1.7;margin-top:16px;">
+            O valor do padrão é <strong style="color:var(--ink);">comunicar</strong>: quando você diz <code class="inline">FreteStrategy</code>, qualquer leitor — humano ou agente — sabe imediatamente <em>por que</em> o polimorfismo está sendo usado ali.
+          </p>
+        </div>
+        <div class="corner-num">13</div>
+      </div>
+
+      <!-- ═══ SLIDE 14 — BLOCO 4: CENÁRIO DA DEMO ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 4 · Demo Java</div>
+          <h2 class="section">Cenário — cálculo de frete em e-commerce</h2>
+          <div class="divider"></div>
+          <p class="body" style="margin-bottom:24px;">Um carrinho de compras precisa calcular o frete conforme a transportadora escolhida. Três opções iniciais:</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+            <div class="card" style="text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--accent2);">Correios</div>
+              <div class="card-body" style="margin-top:8px;">peso × 2,5 + 10,00</div>
+            </div>
+            <div class="card" style="text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--accent2);">Jadlog</div>
+              <div class="card-body" style="margin-top:8px;">peso × 3,0 + 5,00</div>
+            </div>
+            <div class="card" style="text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--accent2);">Retirada</div>
+              <div class="card-body" style="margin-top:8px;">grátis</div>
+            </div>
+          </div>
+          <div class="def-box" style="margin-top:22px;margin-bottom:0;border-left-color:var(--amber);">
+            <p style="font-size:14px;color:var(--ink2);line-height:1.5;"><strong style="color:var(--amber2);">E se amanhã</strong> o chefe pedir "adicione Loggi"? Vamos ver como cada abordagem responde.</p>
+          </div>
+        </div>
+        <div class="corner-num">14</div>
+      </div>
+
+      <!-- ═══ SLIDE 15 — BLOCO 4.1: CÓDIGO ANTES (ANTI-PATTERN) ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 4 · Antes</div>
+          <h2 class="section">Sem Strategy — o <code class="inline">if/else</code> hell</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:18px;">
+            <div>
+              <span class="code-label bad">anti-pattern</span>
+              <pre class="code-block bad"><span class="tok-kw">public class</span> <span class="tok-ty">CalculadoraFrete</span> {
+
+    <span class="tok-kw">public double</span> <span class="tok-mt">calcular</span>(<span class="tok-ty">String</span> tipo, <span class="tok-kw">double</span> pesoKg) {
+        <span class="tok-kw">if</span> (tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"CORREIOS"</span>)) {
+            <span class="tok-kw">return</span> pesoKg * <span class="tok-num">2.5</span> + <span class="tok-num">10.0</span>;
+        } <span class="tok-kw">else if</span> (tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"JADLOG"</span>)) {
+            <span class="tok-kw">return</span> pesoKg * <span class="tok-num">3.0</span> + <span class="tok-num">5.0</span>;
+        } <span class="tok-kw">else if</span> (tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"RETIRADA"</span>)) {
+            <span class="tok-kw">return</span> <span class="tok-num">0.0</span>;
+        }
+        <span class="tok-kw">throw new</span> <span class="tok-ty">IllegalArgumentException</span>(<span class="tok-str">"Tipo inválido"</span>);
+    }
+}</pre>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--red2);margin-bottom:10px;">Problemas</div>
+              <ul class="x-list" style="gap:8px;">
+                <li><div>Strings mágicas — <code class="inline">"correios"</code> em minúsculo quebra.</div></li>
+                <li><div>Nova transportadora = editar <strong style="color:var(--ink);">esta classe</strong>. Viola OCP.</div></li>
+                <li><div>Testar Jadlog exige instanciar a calculadora inteira.</div></li>
+                <li><div>Cresce pra sempre: 3 hoje, 15 em 2 anos.</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">15</div>
+      </div>
+
+      <!-- ═══ SLIDE 16 — BLOCO 4.2 PASSO 1: INTERFACE ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 4 · Depois · Passo 1 de 4</div>
+          <h2 class="section">A interface — o contrato</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+            <div>
+              <span class="code-label good">strategy</span>
+              <pre class="code-block good"><span class="tok-kw">public interface</span> <span class="tok-ty">FreteStrategy</span> {
+    <span class="tok-kw">double</span> <span class="tok-mt">calcular</span>(<span class="tok-kw">double</span> pesoKg);
+}</pre>
+            </div>
+            <div>
+              <ul class="arrow-list">
+                <li><div>Um <strong style="color:var(--ink);">único método</strong> — define o contrato que toda estratégia de frete precisa implementar.</div></li>
+                <li><div>É o ponto de <strong style="color:var(--ink);">desacoplamento</strong> entre quem <em>usa</em> o frete e quem <em>calcula</em>.</div></li>
+                <li><div>Tão simples que Java a trata como <strong style="color:var(--accent2);">functional interface</strong> — volta mais tarde.</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">16</div>
+      </div>
+
+      <!-- ═══ SLIDE 17 — BLOCO 4.2 PASSO 2: CLASSES CONCRETAS ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 4 · Depois · Passo 2 de 4</div>
+          <h2 class="section">Três estratégias, três classes</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+            <div>
+              <span class="code-label good">concrete</span>
+              <pre class="code-block good" style="font-size:10.5px;"><span class="tok-kw">public class</span> <span class="tok-ty">FreteCorreios</span>
+        <span class="tok-kw">implements</span> <span class="tok-ty">FreteStrategy</span> {
+
+    <span class="tok-an">@Override</span>
+    <span class="tok-kw">public double</span> <span class="tok-mt">calcular</span>(
+            <span class="tok-kw">double</span> pesoKg) {
+        <span class="tok-kw">return</span> pesoKg * <span class="tok-num">2.5</span>
+             + <span class="tok-num">10.0</span>;
+    }
+}</pre>
+            </div>
+            <div>
+              <span class="code-label good">concrete</span>
+              <pre class="code-block good" style="font-size:10.5px;"><span class="tok-kw">public class</span> <span class="tok-ty">FreteJadlog</span>
+        <span class="tok-kw">implements</span> <span class="tok-ty">FreteStrategy</span> {
+
+    <span class="tok-an">@Override</span>
+    <span class="tok-kw">public double</span> <span class="tok-mt">calcular</span>(
+            <span class="tok-kw">double</span> pesoKg) {
+        <span class="tok-kw">return</span> pesoKg * <span class="tok-num">3.0</span>
+             + <span class="tok-num">5.0</span>;
+    }
+}</pre>
+            </div>
+            <div>
+              <span class="code-label good">concrete</span>
+              <pre class="code-block good" style="font-size:10.5px;"><span class="tok-kw">public class</span> <span class="tok-ty">FreteRetirada</span>
+        <span class="tok-kw">implements</span> <span class="tok-ty">FreteStrategy</span> {
+
+    <span class="tok-an">@Override</span>
+    <span class="tok-kw">public double</span> <span class="tok-mt">calcular</span>(
+            <span class="tok-kw">double</span> pesoKg) {
+        <span class="tok-kw">return</span> <span class="tok-num">0.0</span>;
+    }
+}</pre>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--ink2);margin-top:20px;line-height:1.5;">Cada classe é <strong style="color:var(--accent2);">testável isolada</strong>: <code class="inline">new FreteJadlog().calcular(2.0)</code> → <span style="color:var(--accent3);">11.0</span>. Nenhuma conhece as outras.</p>
+        </div>
+        <div class="corner-num">17</div>
+      </div>
+
+      <!-- ═══ SLIDE 18 — BLOCO 4.2 PASSO 3: CONTEXT ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 4 · Depois · Passo 3 de 4</div>
+          <h2 class="section">O Context — quem usa a estratégia</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:center;">
+            <div>
+              <span class="code-label good">context</span>
+              <pre class="code-block good"><span class="tok-kw">public class</span> <span class="tok-ty">Carrinho</span> {
+
+    <span class="tok-kw">private</span> <span class="tok-ty">FreteStrategy</span> frete;
+
+    <span class="tok-kw">public</span> <span class="tok-ty">Carrinho</span>(<span class="tok-ty">FreteStrategy</span> frete) {
+        <span class="tok-kw">this</span>.frete = frete;
+    }
+
+    <span class="tok-kw">public void</span> <span class="tok-mt">setFrete</span>(<span class="tok-ty">FreteStrategy</span> frete) {
+        <span class="tok-kw">this</span>.frete = frete;
+    }
+
+    <span class="tok-kw">public double</span> <span class="tok-mt">totalComFrete</span>(<span class="tok-kw">double</span> subtotal, <span class="tok-kw">double</span> pesoKg) {
+        <span class="tok-kw">return</span> subtotal + frete.<span class="tok-mt">calcular</span>(pesoKg);
+    }
+}</pre>
+            </div>
+            <div>
+              <ul class="arrow-list">
+                <li><div><code class="inline">Carrinho</code> só conhece a <strong style="color:var(--ink);">interface</strong> — nunca as classes concretas.</div></li>
+                <li><div>O <code class="inline">setFrete</code> permite trocar <strong style="color:var(--accent2);">em runtime</strong> — ex.: usuário muda o CEP, sistema troca a estratégia sem recriar o carrinho.</div></li>
+                <li><div>Isso é <strong style="color:var(--ink);">injeção de dependência</strong> na veia, sem framework.</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">18</div>
+      </div>
+
+      <!-- ═══ SLIDE 19 — BLOCO 4.2 PASSO 4: USO + OUTPUT ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 4 · Depois · Passo 4 de 4</div>
+          <h2 class="section">Troca em runtime</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:18px;">
+            <div>
+              <span class="code-label good">main</span>
+              <pre class="code-block good" style="font-size:11px;"><span class="tok-kw">public class</span> <span class="tok-ty">App</span> {
+    <span class="tok-kw">public static void</span> <span class="tok-mt">main</span>(<span class="tok-ty">String</span>[] args) {
+        <span class="tok-ty">Carrinho</span> carrinho = <span class="tok-kw">new</span> <span class="tok-ty">Carrinho</span>(<span class="tok-kw">new</span> <span class="tok-ty">FreteCorreios</span>());
+        <span class="tok-ty">System</span>.out.<span class="tok-mt">println</span>(carrinho.<span class="tok-mt">totalComFrete</span>(<span class="tok-num">100.0</span>, <span class="tok-num">2.0</span>));
+
+        carrinho.<span class="tok-mt">setFrete</span>(<span class="tok-kw">new</span> <span class="tok-ty">FreteJadlog</span>());
+        <span class="tok-ty">System</span>.out.<span class="tok-mt">println</span>(carrinho.<span class="tok-mt">totalComFrete</span>(<span class="tok-num">100.0</span>, <span class="tok-num">2.0</span>));
+
+        carrinho.<span class="tok-mt">setFrete</span>(<span class="tok-kw">new</span> <span class="tok-ty">FreteRetirada</span>());
+        <span class="tok-ty">System</span>.out.<span class="tok-mt">println</span>(carrinho.<span class="tok-mt">totalComFrete</span>(<span class="tok-num">100.0</span>, <span class="tok-num">2.0</span>));
+    }
+}</pre>
+            </div>
+            <div>
+              <div class="terminal-header">output</div>
+              <div class="terminal-output"><span class="tprompt">$ java App</span>
+<span class="tout">115.0</span>   <span class="tcomment">// Correios (2kg)</span>
+<span class="tout">111.0</span>   <span class="tcomment">// Jadlog (2kg)</span>
+<span class="tout">100.0</span>   <span class="tcomment">// Retirada (grátis)</span></div>
+              <p style="font-size:12px;color:var(--ink2);margin-top:14px;line-height:1.5;">Adicionar <strong style="color:var(--accent2);">Loggi</strong> amanhã? <code class="inline">FreteLoggi implements FreteStrategy</code>. <strong style="color:var(--ink);">Zero</strong> alteração no Carrinho.</p>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">19</div>
+      </div>
+
+      <!-- ═══ SLIDE 20 — BLOCO 4.3 BÔNUS: LAMBDA ═══ -->
+      <div class="slide s-mid">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 4 · Bônus · se sobrar tempo</div>
+          <h2 class="section">Java moderno — lambda como Strategy</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+            <div>
+              <span class="code-label good">java 8+</span>
+              <pre class="code-block good"><span class="tok-cmt">// FreteStrategy tem 1 método só</span>
+<span class="tok-cmt">// → é uma functional interface</span>
+
+<span class="tok-ty">FreteStrategy</span> freteGratis =
+    peso -&gt; <span class="tok-num">0.0</span>;
+
+<span class="tok-ty">FreteStrategy</span> fretePromocional =
+    peso -&gt; peso * <span class="tok-num">1.0</span>;
+
+carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
+            </div>
+            <div>
+              <p class="key-quote" style="font-size:22px;padding:0;">
+                Padrão não envelhece — a <span class="hl">linguagem evolui</span> pra expressá-lo melhor.
+              </p>
+              <p style="font-size:13px;color:var(--ink2);margin-top:16px;line-height:1.6;">
+                Estratégias pequenas, de escopo local, podem virar <strong style="color:var(--ink);">uma linha</strong>. O padrão continua lá — só mudou a sintaxe.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">20</div>
+      </div>
+
+      <!-- ═══ SLIDE 21 — BLOCO 5.1: RESUMO 3 FRASES ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 5 · Fechamento</div>
+          <h2 class="section">Strategy em três frases</h2>
+          <div class="divider"></div>
+          <ul class="summary-list" style="gap:18px;margin-top:16px;">
+            <li class="summary-item">
+              <span class="s-idx">01</span>
+              <div>
+                <div class="s-title"><strong style="color:var(--ink);">O que é</strong></div>
+                <div class="s-sub" style="font-size:14px;color:var(--ink2);margin-top:4px;">Strategy encapsula variações de um algoritmo em classes separadas, trocáveis em tempo de execução.</div>
+              </div>
+            </li>
+            <li class="summary-item">
+              <span class="s-idx">02</span>
+              <div>
+                <div class="s-title"><strong style="color:var(--ink);">Quando usar</strong></div>
+                <div class="s-sub" style="font-size:14px;color:var(--ink2);margin-top:4px;">Quando você tem várias formas de fazer a mesma coisa <em>e</em> elas tendem a crescer ao longo do tempo.</div>
+              </div>
+            </li>
+            <li class="summary-item">
+              <span class="s-idx">03</span>
+              <div>
+                <div class="s-title"><strong style="color:var(--ink);">Por que importa agora</strong></div>
+                <div class="s-sub" style="font-size:14px;color:var(--ink2);margin-top:4px;">Código padronizado é mais legível pra humanos <strong style="color:var(--accent2);">e</strong> pra agentes de IA — e padrões persistem mesmo quando frameworks mudam.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="corner-num">21</div>
+      </div>
+
+      <!-- ═══ SLIDE 22 — BLOCO 5.2: QUANDO NÃO USAR ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 5 · Armadilhas</div>
+          <h2 class="section">Quando <em style="color:var(--red2);">não</em> usar Strategy</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:10px;">
+            <div class="card" style="border-left:3px solid var(--amber);">
+              <div class="card-title" style="color:var(--amber2);">Over-engineering</div>
+              <div class="card-body">2 casos que nunca vão virar 5? Um <code class="inline">if/else</code> simples é <strong style="color:var(--ink);">mais honesto</strong> que interface + 2 classes.</div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--amber);">
+              <div class="card-title" style="color:var(--amber2);">Abstração vazia</div>
+              <div class="card-body">Se todas as "estratégias" fazem quase a mesma coisa, você não está usando Strategy — está usando <strong style="color:var(--ink);">interface pra constar</strong>.</div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--amber);">
+              <div class="card-title" style="color:var(--amber2);">Dogma</div>
+              <div class="card-body">Padrão é <strong style="color:var(--ink);">decisão de design</strong>, não obrigação. O padrão serve o projeto — não o contrário.</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:24px;font-style:italic;text-align:center;">Use padrões pra problemas que doem. Código simples que nunca cresce é ok ser simples.</p>
+        </div>
+        <div class="corner-num">22</div>
+      </div>
+
+      <!-- ═══ SLIDE 23 — BLOCO 5.3+5.4: Q&A + GANCHO PRO BÔNUS ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner" style="justify-content:center;align-items:center;text-align:center;">
+          <div class="slide-tag">Bloco 5 · Perguntas</div>
+          <h1 class="display" style="font-size:80px;margin-top:8px;">Obrigado!</h1>
+          <div class="divider" style="margin:18px auto 24px;"></div>
+          <p style="font-size:18px;color:var(--ink2);max-width:640px;line-height:1.55;">
+            Perguntas?
+          </p>
+          <div style="margin-top:36px;padding:14px 22px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.25);border-radius:8px;max-width:620px;">
+            <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--violet2);margin-bottom:6px;">Bônus guardado</div>
+            <div style="font-size:13.5px;color:var(--ink2);line-height:1.55;">
+              Uma pergunta comum: <em style="color:var(--ink);">"qual a diferença entre Strategy e State, se o diagrama é igual?"</em> — se quiserem, a gente fecha com essa.
+            </div>
+          </div>
+          <div style="margin-top:22px;font-size:11px;color:var(--muted);">Factory costuma aparecer junto — pra decidir <em>qual</em> Strategy instanciar.</div>
+        </div>
+        <div class="corner-num">23</div>
+      </div>
+
+      <!-- ═══ SLIDE 24 — BLOCO 6: STRATEGY VS STATE ═══ -->
+      <div class="slide s-dark2">
+        <div class="slide-inner">
+          <div class="slide-tag">Bônus · Reserva</div>
+          <h2 class="section">Strategy vs State — mesma estrutura, <em style="color:var(--accent2);">perguntas diferentes</em></h2>
+          <div class="divider"></div>
+          <div class="vs-grid" style="flex:1;margin-top:10px;">
+            <div class="vs-col">
+              <div>
+                <div class="vs-sub">Strategy</div>
+                <div class="vs-title">O cliente escolhe</div>
+              </div>
+              <ul class="arrow-list" style="gap:8px;">
+                <li><div>Estratégias geralmente <strong style="color:var(--ink);">não se conhecem</strong>.</div></li>
+                <li><div>Quem troca é o <strong style="color:var(--ink);">cliente</strong> ou uma Factory externa.</div></li>
+                <li><div>Ex.: frete — o usuário escolhe a transportadora.</div></li>
+              </ul>
+              <div style="margin-top:auto;padding:10px 12px;background:rgba(16,185,129,.08);border-left:3px solid var(--accent);border-radius:4px;">
+                <div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:4px;">Pergunta que responde</div>
+                <div style="font-size:13px;color:var(--ink);font-style:italic;">"Qual algoritmo eu uso agora?"</div>
+              </div>
+            </div>
+            <div class="vs-divider"></div>
+            <div class="vs-col">
+              <div>
+                <div class="vs-sub" style="color:var(--violet2);">State</div>
+                <div class="vs-title">O próprio objeto transita</div>
+              </div>
+              <ul class="arrow-list" style="gap:8px;">
+                <li><div>Estados <strong style="color:var(--ink);">conhecem uns aos outros</strong> (sabem a próxima transição).</div></li>
+                <li><div>Quem troca é <strong style="color:var(--ink);">o próprio objeto</strong>, reagindo a eventos.</div></li>
+                <li><div>Ex.: <code class="inline">Pedido</code>: Pendente → Pago → Enviado → Entregue.</div></li>
+              </ul>
+              <div style="margin-top:auto;padding:10px 12px;background:rgba(139,92,246,.08);border-left:3px solid var(--violet);border-radius:4px;">
+                <div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--violet2);margin-bottom:4px;">Pergunta que responde</div>
+                <div style="font-size:13px;color:var(--ink);font-style:italic;">"Em que momento do ciclo de vida estou?"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">24</div>
+      </div>
+
+      <!-- ═══ SLIDE 25 — CRÉDITOS E REFERÊNCIAS ═══ -->
+      <div class="slide s-dark">
+        <div class="slide-inner" style="justify-content:center;">
+          <div class="slide-tag">Créditos</div>
+          <h2 class="section">Referências</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;">
+            <div>
+              <div class="card-title" style="margin-bottom:10px;">Leitura essencial</div>
+              <ul class="arrow-list" style="gap:8px;">
+                <li><div><strong style="color:var(--ink);">Gamma, Helm, Johnson, Vlissides</strong> — <em>Design Patterns</em> (GoF, 1994).</div></li>
+                <li><div><strong style="color:var(--ink);">Refactoring.Guru</strong> — Strategy em Java.</div></li>
+                <li><div><strong style="color:var(--ink);">Baeldung</strong> — Strategy Pattern in Java.</div></li>
+              </ul>
+            </div>
+            <div>
+              <div class="card-title" style="margin-bottom:10px;">Agentic coding (2026)</div>
+              <ul class="arrow-list" style="gap:8px;">
+                <li><div><strong style="color:var(--ink);">Simon Willison</strong> — Agentic Engineering Patterns.</div></li>
+                <li><div><strong style="color:var(--ink);">SitePoint</strong> — Agentic Design Patterns 2026.</div></li>
+                <li><div><strong style="color:var(--ink);">Gartner</strong> — projeção de adoção de agentes em 2026.</div></li>
+              </ul>
+            </div>
+          </div>
+          <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-size:11px;color:var(--muted);">Grupo</div>
+              <div style="font-size:13px;color:var(--ink);margin-top:2px;">Eliezir · Thomas · Carlos · Eduardo</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:11px;color:var(--muted);">POO · IFAL 2026.1</div>
+              <div style="font-size:13px;color:var(--accent2);margin-top:2px;font-style:italic;">Prof. Kenji</div>
+            </div>
+          </div>
+        </div>
+        <div class="corner-num">25</div>
+      </div>
 
     </div>
   </div>
@@ -133,7 +833,45 @@
     <div class="toc-section">Abertura</div>
     <a class="toc-item" data-goto="0">1 · Capa</a>
     <a class="toc-item" data-goto="1">2 · Sumário</a>
-    <!-- [Os demais itens serão preenchidos junto com os slides de conteúdo] -->
+
+    <div class="toc-section">Bloco 0 — A dor real</div>
+    <a class="toc-item" data-goto="2">3 · Código feio</a>
+    <a class="toc-item" data-goto="3">4 · A realidade dos projetos</a>
+
+    <div class="toc-section">Bloco 1 — Padrões de projeto</div>
+    <a class="toc-item" data-goto="4">5 · Definição + GoF</a>
+    <a class="toc-item" data-goto="5">6 · O que não é</a>
+
+    <div class="toc-section">Bloco 2 — Por que importam hoje</div>
+    <a class="toc-item" data-goto="6">7 · Colaboração humana</a>
+    <a class="toc-item" data-goto="7">8 · Agentic coding</a>
+    <a class="toc-item" data-goto="8">9 · 3 razões</a>
+    <a class="toc-item" data-goto="9">10 · Frameworks vs Padrões</a>
+
+    <div class="toc-section">Bloco 3 — Strategy</div>
+    <a class="toc-item" data-goto="10">11 · Intenção</a>
+    <a class="toc-item" data-goto="11">12 · Estrutura UML</a>
+    <a class="toc-item" data-goto="12">13 · Polimorfismo com nome</a>
+
+    <div class="toc-section">Bloco 4 — Demo Java</div>
+    <a class="toc-item" data-goto="13">14 · Cenário</a>
+    <a class="toc-item" data-goto="14">15 · Antes (anti-pattern)</a>
+    <a class="toc-item" data-goto="15">16 · Interface</a>
+    <a class="toc-item" data-goto="16">17 · Classes concretas</a>
+    <a class="toc-item" data-goto="17">18 · Context</a>
+    <a class="toc-item" data-goto="18">19 · Runtime + output</a>
+    <a class="toc-item" data-goto="19">20 · Bônus: lambda</a>
+
+    <div class="toc-section">Bloco 5 — Fechamento</div>
+    <a class="toc-item" data-goto="20">21 · Resumo</a>
+    <a class="toc-item" data-goto="21">22 · Quando NÃO usar</a>
+    <a class="toc-item" data-goto="22">23 · Q&amp;A + gancho</a>
+
+    <div class="toc-section">Bônus · Reserva</div>
+    <a class="toc-item" data-goto="23">24 · Strategy vs State</a>
+
+    <div class="toc-section">Fim</div>
+    <a class="toc-item" data-goto="24">25 · Referências</a>
   </div>
 </div>
 

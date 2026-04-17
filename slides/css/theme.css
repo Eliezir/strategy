@@ -294,6 +294,158 @@ code.inline {
 }
 .key-quote .hl { color: var(--accent2); font-style: normal; font-weight: 600; }
 
+/* UML boxes (Strategy estrutura + Strategy vs State) */
+.uml-stack { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.uml-box {
+  background: var(--navy3);
+  border: 1.5px solid var(--accent);
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: var(--ink);
+  min-width: 150px;
+  text-align: center;
+  position: relative;
+}
+.uml-box .uml-kind {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--accent2);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+}
+.uml-box .uml-name { font-weight: 600; }
+.uml-box.interface { border-style: dashed; }
+.uml-box.concrete { border-color: var(--border); background: var(--navy2); }
+.uml-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.uml-line {
+  width: 2px; height: 28px;
+  background: var(--accent);
+  position: relative;
+}
+.uml-line.dashed { background: transparent; border-left: 2px dashed var(--accent); }
+.uml-fanout {
+  width: 2px; height: 18px;
+  background: var(--accent);
+  position: relative;
+}
+.uml-bracket {
+  height: 18px;
+  border-left: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  border-top: 2px solid var(--accent);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Terminal output (saída do main()) */
+.terminal-output {
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: #9be7c4;
+  box-shadow: inset 0 0 40px rgba(16,185,129,.05);
+}
+.terminal-output .tprompt { color: var(--muted); }
+.terminal-output .tout    { color: var(--accent3); }
+.terminal-output .tcomment { color: var(--muted); font-style: italic; }
+.terminal-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  color: var(--muted);
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.terminal-header::before {
+  content: '●  ●  ●';
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.15);
+  font-size: 9px;
+}
+
+/* VS grid — comparação lado a lado (Strategy vs State) */
+.vs-grid {
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.vs-divider {
+  background: linear-gradient(to bottom,
+    transparent,
+    var(--border) 15%,
+    var(--border) 85%,
+    transparent);
+  width: 2px;
+}
+.vs-col { display: flex; flex-direction: column; gap: 10px; }
+.vs-col .vs-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+}
+.vs-col .vs-sub {
+  font-size: 11px;
+  color: var(--accent2);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Big stat number */
+.big-stat {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 18px 20px;
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.big-stat .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px; font-weight: 700;
+  line-height: 1;
+  color: var(--accent2);
+  letter-spacing: -.02em;
+}
+.big-stat .num .unit { font-size: 36px; color: var(--accent3); }
+.big-stat .stat-label {
+  font-size: 12px; color: var(--ink2);
+  text-align: center; margin-top: 8px; line-height: 1.4;
+}
+.big-stat .stat-src {
+  font-size: 10px; color: var(--muted);
+  margin-top: 6px; font-style: italic;
+}
+
+/* X-list — "não é isto" */
+.x-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.x-list li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 13px; line-height: 1.5; color: var(--ink2);
+}
+.x-list li::before {
+  content: '✗';
+  color: var(--red2);
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+.x-list li.check::before {
+  content: '✓';
+  color: var(--accent2);
+}
+.x-list li strong { color: var(--ink); font-weight: 600; }
+
 /* Screenshot styling */
 .slide-screenshot {
   border-radius: 6px;
