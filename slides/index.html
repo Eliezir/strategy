@@ -109,41 +109,75 @@
         <div class="corner-num">2</div>
       </div>
 
-      <!-- ═══ SLIDE 3 — BLOCO 0.2: A DOR REAL (código feio) ═══ -->
+      <!-- ═══ SLIDE 3 — BLOCO 0.2: A PERGUNTA (teaser limpo) ═══ -->
       <div class="slide s-dark">
-        <div class="slide-inner">
+        <div class="slide-inner" style="justify-content:center;">
           <div class="slide-tag">Bloco 0 · A dor real</div>
-          <h2 class="section">Alguém já escreveu — ou leu — algo assim?</h2>
-          <div class="divider"></div>
-          <pre class="code-block bad" style="font-size:11px;flex:1;"><span class="tok-kw">public class</span> <span class="tok-ty">Processador</span> {
-
-    <span class="tok-kw">public void</span> <span class="tok-mt">executar</span>(<span class="tok-ty">String</span> feature, <span class="tok-ty">Request</span> req) {
-        <span class="tok-kw">switch</span> (feature) {
-            <span class="tok-kw">case</span> <span class="tok-str">"feature1"</span>:
-                <span class="tok-mt">validar</span>(req); <span class="tok-mt">salvar</span>(req); <span class="tok-mt">notificar</span>(req);
-                <span class="tok-kw">break</span>;
-            <span class="tok-kw">case</span> <span class="tok-str">"feature2"</span>:
-                <span class="tok-mt">validar</span>(req); <span class="tok-mt">gerarRelatorio</span>(req);
-                <span class="tok-kw">break</span>;
-            <span class="tok-kw">case</span> <span class="tok-str">"feature3"</span>:
-                <span class="tok-mt">aplicarDesconto</span>(req); <span class="tok-mt">salvar</span>(req);
-                <span class="tok-kw">break</span>;
-            <span class="tok-kw">case</span> <span class="tok-str">"feature4"</span>: <span class="tok-cmt">// ...</span>
-                <span class="tok-kw">break</span>;
-            <span class="tok-kw">case</span> <span class="tok-str">"feature5"</span>: <span class="tok-cmt">// ...</span>
-                <span class="tok-kw">break</span>;
-            <span class="tok-cmt">// ... e mais 10 cases ...</span>
-            <span class="tok-kw">default</span>:
-                <span class="tok-kw">throw new</span> <span class="tok-ty">IllegalArgumentException</span>(<span class="tok-str">"Feature desconhecida: "</span> + feature);
-        }
-    }
-}</pre>
-          <p style="font-size:13px;color:var(--muted);margin-top:12px;font-style:italic;">Nem precisa explicar o que faz. O que você está sentindo já é a resposta.</p>
+          <h1 class="display" style="font-size:70px;line-height:1.08;max-width:820px;margin-top:8px;">
+            Alguém já <span style="color:var(--accent2);font-style:italic;">escreveu</span> —<br>
+            ou <span style="color:var(--accent2);font-style:italic;">leu</span> — algo assim?
+          </h1>
+          <div class="divider" style="margin-top:28px;"></div>
+          <p style="font-size:15px;color:var(--ink2);max-width:720px;line-height:1.6;margin-top:4px;">
+            Nem precisa explicar o que o código faz. O que você está <em style="color:var(--ink);">sentindo</em> ao olhar já é a resposta.
+          </p>
+          <p style="font-size:12px;color:var(--muted);margin-top:28px;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;">
+            → próximo slide
+          </p>
         </div>
         <div class="corner-num">3</div>
       </div>
 
-      <!-- ═══ SLIDE 4 — BLOCO 0.3: A REALIDADE DOS PROJETOS ═══ -->
+      <!-- ═══ SLIDE 4 — BLOCO 0.2 · ZOOM: CÓDIGO EM FULL-SCREEN ═══ -->
+      <div class="slide s-dark" data-steps="8">
+        <div class="slide-inner" style="padding:30px 44px 22px;">
+          <pre class="code-block bad" style="font-size:15.5px;line-height:1.7;padding:22px 28px;margin:0;flex:1;min-height:0;overflow:auto;"><span class="step" data-step="1"><span class="tok-kw">public class</span> <span class="tok-ty">Notificador</span> {
+
+    <span class="tok-kw">public void</span> <span class="tok-mt">enviar</span>(<span class="tok-ty">String</span> canal, <span class="tok-ty">Usuario</span> user, <span class="tok-ty">String</span> msg) {</span>
+        <span class="step" data-step="2"><span class="tok-kw">if</span> (canal.<span class="tok-mt">equals</span>(<span class="tok-str">"EMAIL"</span>)) {
+            smtp.<span class="tok-mt">connect</span>();
+            smtp.<span class="tok-mt">authenticate</span>(config.<span class="tok-mt">getSmtpUser</span>());
+            smtp.<span class="tok-mt">send</span>(user.<span class="tok-mt">getEmail</span>(), <span class="tok-str">"App"</span>, msg);
+            smtp.<span class="tok-mt">disconnect</span>();
+            metrics.<span class="tok-mt">increment</span>(<span class="tok-str">"email.sent"</span>);
+        }</span> <span class="step" data-step="3"><span class="tok-kw">else if</span> (canal.<span class="tok-mt">equals</span>(<span class="tok-str">"SMS"</span>)) {
+            <span class="tok-ty">TwilioResponse</span> r = twilio.<span class="tok-mt">sendSms</span>(user.<span class="tok-mt">getPhone</span>(), msg);
+            <span class="tok-kw">if</span> (r.<span class="tok-mt">isFailed</span>()) <span class="tok-mt">retry</span>(canal, user, msg);
+        }</span> <span class="step" data-step="4"><span class="tok-kw">else if</span> (canal.<span class="tok-mt">equals</span>(<span class="tok-str">"PUSH"</span>)) {
+            <span class="tok-ty">String</span> token = user.<span class="tok-mt">getPushToken</span>();
+            <span class="tok-kw">if</span> (token == <span class="tok-kw">null</span>) <span class="tok-kw">throw new</span> <span class="tok-ty">IllegalStateException</span>(<span class="tok-str">"sem token"</span>);
+            firebase.<span class="tok-mt">push</span>(token, msg);
+        }</span> <span class="step" data-step="5"><span class="tok-kw">else if</span> (canal.<span class="tok-mt">equals</span>(<span class="tok-str">"TELEGRAM"</span>)) {
+            <span class="tok-ty">Long</span> chatId = user.<span class="tok-mt">getTelegramChatId</span>();
+            telegram.<span class="tok-mt">sendMessage</span>(chatId, msg);
+        }</span> <span class="step" data-step="6"><span class="tok-kw">else if</span> (canal.<span class="tok-mt">equals</span>(<span class="tok-str">"WHATSAPP"</span>)) {
+            <span class="tok-cmt">// adicionado na sprint passada</span>
+            wpp.<span class="tok-mt">send</span>(user.<span class="tok-mt">getWhatsapp</span>(), msg);
+        }</span> <span class="step" data-step="7"><span class="tok-kw">else if</span> (canal.<span class="tok-mt">equals</span>(<span class="tok-str">"DISCORD"</span>)) {
+            <span class="tok-cmt">// adicionado ontem — o time comercial pediu</span>
+            discord.<span class="tok-mt">relay</span>(user.<span class="tok-mt">getDiscordId</span>(), msg);
+        }</span>
+        <span class="step" data-step="8"><span class="tok-kw">throw new</span> <span class="tok-ty">IllegalArgumentException</span>(<span class="tok-str">"Canal: "</span> + canal);</span>
+    }
+}</pre>
+          <div style="display:flex;gap:14px;align-items:flex-start;margin-top:12px;">
+            <div style="flex:1;">
+              <div class="step-note" data-step="1"><strong>Dispatch por string.</strong> O próprio tipo do parâmetro já é o sinal de alarme — a lógica depende de comparar texto.</div>
+              <div class="step-note" data-step="2"><strong>EMAIL — o ciclo de vida do SMTP vaza pra cá.</strong> Connect, auth, send, disconnect, métricas. Seis responsabilidades em um único bloco de negócio.</div>
+              <div class="step-note" data-step="3"><strong>SMS — estilo totalmente diferente do EMAIL.</strong> API síncrona com retorno tipado, lógica de retry inline. Cada canal impõe o seu jeito.</div>
+              <div class="step-note" data-step="4"><strong>PUSH — null-check virou regra de negócio.</strong> Erro de infraestrutura (token ausente) vazando como exceção pro chamador.</div>
+              <div class="step-note" data-step="5"><strong>TELEGRAM — mais uma API, mais um identificador.</strong> Agora tem <code class="inline">chatId</code> em Long, diferente dos outros. Cada novo canal adiciona um vocabulário próprio.</div>
+              <div class="step-note" data-step="6"><strong>"adicionado na sprint passada".</strong> Comentário honesto — é assim que <code class="inline">if/else</code> hell nasce: uma feature por vez.</div>
+              <div class="step-note" data-step="7"><strong>"adicionado ontem".</strong> E o ciclo continua. A cada sprint um canal novo, no mesmo arquivo, com o mesmo dono que vira gargalo.</div>
+              <div class="step-note" data-step="8"><strong>Fallback por exceção.</strong> Se alguém digitar <code class="inline">"email"</code> minúsculo, <em>boom</em> em produção. Sem teste unitário dá pra perceber?</div>
+            </div>
+            <div class="step-indicator" style="position:static;flex-shrink:0;align-self:flex-start;margin-top:2px;"><kbd>.</kbd> destacar &nbsp;·&nbsp; <kbd>,</kbd> voltar</div>
+          </div>
+        </div>
+        <div class="corner-num">4</div>
+      </div>
+
+      <!-- ═══ SLIDE 5 — BLOCO 0.3: A REALIDADE DOS PROJETOS ═══ -->
       <div class="slide s-dark2">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 0 · Por que isto acontece</div>
@@ -167,7 +201,7 @@
             <p class="def-text">"Isto não é incompetência — é a natureza do negócio de software. Padrões de projeto existem <em style="color:var(--accent2);">exatamente</em> porque essa dor é inevitável."</p>
           </div>
         </div>
-        <div class="corner-num">4</div>
+        <div class="corner-num">5</div>
       </div>
 
       <!-- ═══ SLIDE 5 — BLOCO 1.1 + 1.2: DEFINIÇÃO + FAMÍLIAS GoF ═══ -->
@@ -194,29 +228,37 @@
               <div class="card-body">Como objetos <strong style="color:var(--ink);">colaboram</strong>.<br><span style="color:var(--muted);font-size:11.5px;">Ex.: Observer, <strong style="color:var(--accent2);">Strategy</strong>, State</span></div>
             </div>
           </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:14px;text-align:right;font-style:italic;">Gang of Four (Gamma, Helm, Johnson, Vlissides) · 1994 · 23 padrões clássicos</p>
-        </div>
-        <div class="corner-num">5</div>
-      </div>
-
-      <!-- ═══ SLIDE 6 — BLOCO 1.3: O QUE PADRÃO NÃO É ═══ -->
-      <div class="slide s-mid">
-        <div class="slide-inner">
-          <div class="slide-tag">Bloco 1 · Desmistificando</div>
-          <h2 class="section">O que um padrão não é</h2>
-          <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px;">
-            <ul class="x-list">
-              <li><div><strong>Não é biblioteca.</strong> Você não <code class="inline">import</code> Strategy de lugar nenhum — você escreve no seu código.</div></li>
-              <li><div><strong>Não é framework.</strong> Independente de Spring, Quarkus, qualquer tecnologia.</div></li>
-              <li><div><strong>Não é obrigação.</strong> Usar padrão em código que não precisa é over-engineering.</div></li>
-            </ul>
-            <ul class="x-list">
-              <li class="check"><div><strong>É vocabulário compartilhado.</strong> Quando você diz "aqui é Strategy", quem conhece entende em 3 segundos o que você fez — e, mais importante, <em style="color:var(--accent2);">por quê</em>.</div></li>
-            </ul>
-          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:14px;text-align:right;font-style:italic;">Gang of Four (Gamma, Helm, Johnson, Vlissides) · 1994 · 23 padrões clássicos · <span style="color:var(--accent2);">os padrões se complementam entre si — raramente aparecem sozinhos</span></p>
         </div>
         <div class="corner-num">6</div>
+      </div>
+
+      <!-- ═══ SLIDE 6 — BLOCO 1.3: UM CATÁLOGO QUE SE COMPLEMENTA ═══ -->
+      <div class="slide s-mid">
+        <div class="slide-inner">
+          <div class="slide-tag">Bloco 1 · O catálogo</div>
+          <h2 class="section">Um padrão <em style="color:var(--accent2);">nunca</em> vive sozinho</h2>
+          <div class="divider"></div>
+          <p style="font-size:14px;color:var(--ink2);line-height:1.55;max-width:760px;margin-bottom:20px;">
+            Os 23 padrões da GoF formam um <strong style="color:var(--ink);">catálogo interligado</strong>. Eles se combinam, se referenciam, e aprender um abre a porta pros outros. Alguns vizinhos naturais do Strategy:
+          </p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+            <div class="card">
+              <div class="card-title">Strategy + Factory</div>
+              <div class="card-body">Alguém precisa decidir <em>qual</em> estratégia instanciar. Factory costuma ser quem faz essa escolha — lendo config, perfil do usuário ou regra de negócio.</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Strategy + Singleton</div>
+              <div class="card-body">Se a estratégia é <em>stateless</em> (só calcula), uma instância basta pra toda a app — Singleton aparece naturalmente.</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Strategy dentro de State</div>
+              <div class="card-body">Cada estado de uma máquina pode ter sua própria família de estratégias. Mesma estrutura, encaixes diferentes (veremos a distinção no bônus).</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:22px;font-style:italic;text-align:center;">Padrões são <strong style="color:var(--ink2);">vocabulário compartilhado</strong>, não biblioteca nem framework — e fazem mais sentido em conjunto do que isolados.</p>
+        </div>
+        <div class="corner-num">7</div>
       </div>
 
       <!-- ═══ SLIDE 7 — BLOCO 2a: COLABORAÇÃO HUMANA ═══ -->
@@ -241,7 +283,7 @@
           </div>
           <p style="font-size:13px;color:var(--muted);margin-top:20px;font-style:italic;">Até aqui é o argumento clássico. Em 2026 existe um motivo novo — e é o mais interessante.</p>
         </div>
-        <div class="corner-num">7</div>
+        <div class="corner-num">8</div>
       </div>
 
       <!-- ═══ SLIDE 8 — BLOCO 2b: O QUE É AGENTIC CODING ═══ -->
@@ -250,16 +292,20 @@
           <div class="slide-tag">Bloco 2 · Realidade 2026</div>
           <h2 class="section">Agentic Coding</h2>
           <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:24px;">
+          <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:22px;">
             <div>
-              <div class="def-box">
+              <div class="def-box" style="margin-bottom:14px;">
                 <p class="def-text">Modelo de desenvolvimento em que você descreve a <span style="color:var(--accent2);font-style:normal;">intenção</span> — "adicione suporte a Pix" — e um agente autônomo lê o código, planeja, edita, testa e commita.</p>
               </div>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
                 <span class="pill pill-accent">Cursor</span>
                 <span class="pill pill-accent">Claude Code</span>
                 <span class="pill pill-accent">GitHub Copilot Agent</span>
                 <span class="pill pill-accent">Windsurf</span>
+              </div>
+              <div style="padding:10px 14px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.25);border-radius:6px;">
+                <div style="font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--violet2);margin-bottom:3px;">A próxima onda</div>
+                <div style="font-size:12px;color:var(--ink2);line-height:1.5;">Apps inteiras estão sendo construídas pra <strong style="color:var(--ink);">orquestrar times de agentes</strong> — um planeja, outro coda, outro revisa, outro testa.</div>
               </div>
             </div>
             <div class="big-stat">
@@ -269,40 +315,60 @@
             </div>
           </div>
         </div>
-        <div class="corner-num">8</div>
+        <div class="corner-num">9</div>
       </div>
 
-      <!-- ═══ SLIDE 9 — BLOCO 2b: 3 RAZÕES — PADRÕES IMPORTAM MAIS COM AGENTES ═══ -->
+      <!-- ═══ SLIDE 9 — BLOCO 2b: PAIR PROGRAMMING + 3 RAZÕES ═══ -->
       <div class="slide s-dark">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 2 · Tese central</div>
-          <h2 class="section">Padrões importam <em style="color:var(--accent2);font-style:normal;">mais</em> com agentes — não menos</h2>
+          <h2 class="section">Agora, trabalhar sozinho é <em style="color:var(--accent2);font-style:normal;">pair programming</em></h2>
           <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:4px;">
-            <div class="q-card">
-              <div class="q-num">1</div>
-              <div>
-                <div class="q-label">Reconhecimento</div>
-                <div class="q-text">LLMs foram treinados em milhões de linhas open-source. Strategy é reconhecido <strong style="color:var(--ink);">na hora</strong> — o agente sabe onde encaixar.</div>
+          <p style="font-size:13.5px;color:var(--ink2);line-height:1.55;max-width:760px;margin-bottom:14px;">
+            Você descreve a intenção, o agente propõe, você revisa, aceita ou corrige. Esse ciclo é <strong style="color:var(--accent2);">pair programming</strong> — só que o par nunca cansa. E funciona <em>muito</em> melhor em código com padrões claros.
+          </p>
+          <div style="display:grid;grid-template-columns:1.2fr 1.4fr;gap:16px;flex:1;min-height:0;">
+            <div class="pair-demo">
+              <div class="pair-pane agent">
+                <div class="pair-header"><span class="pair-dot"></span>Agente · escrevendo</div>
+                <div class="pair-line"><span class="tok-kw">public class</span> <span class="tok-ty">FretePix</span> <span class="tok-kw">implements</span></div>
+                <div class="pair-line">        <span class="tok-ty">FreteStrategy</span> {</div>
+                <div class="pair-line">    <span class="tok-an">@Override</span></div>
+                <div class="pair-line">    <span class="tok-kw">public double</span> <span class="tok-mt">calcular</span>(<span class="tok-kw">double</span> p) {<span class="pair-cursor"></span></div>
+              </div>
+              <div class="pair-pane human">
+                <div class="pair-header"><span class="pair-dot"></span>Você · revisando</div>
+                <div class="pair-review accept"><span class="icon">✓</span>Aceito — casa com o padrão</div>
+                <div class="pair-review edit"><span class="icon">✎</span>Mudar nome: <code class="inline">FreteLoggi</code></div>
+                <div class="pair-review ask"><span class="icon">?</span>Já existe teste isolado?</div>
               </div>
             </div>
-            <div class="q-card">
-              <div class="q-num">2</div>
-              <div>
-                <div class="q-label">Menos contexto</div>
-                <div class="q-text">"Adicione Pix" num código com <code class="inline">PagamentoStrategy</code> = <strong style="color:var(--ink);">uma classe nova</strong>. Num <code class="inline">if/else</code> espalhado = ler 5 arquivos.</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div class="q-card" style="padding:12px 14px;">
+                <div class="q-num" style="font-size:28px;">1</div>
+                <div>
+                  <div class="q-label">Reconhecimento</div>
+                  <div class="q-text" style="font-size:12.5px;">LLMs viram milhões de linhas open-source. Strategy é reconhecido <strong style="color:var(--ink);">na hora</strong>.</div>
+                </div>
               </div>
-            </div>
-            <div class="q-card">
-              <div class="q-num">3</div>
-              <div>
-                <div class="q-label">Menos alucinação</div>
-                <div class="q-text">Estrutura nomeada <strong style="color:var(--ink);">ancora</strong> o raciocínio do agente. Menos contexto ruidoso = menos respostas inventadas.</div>
+              <div class="q-card" style="padding:12px 14px;">
+                <div class="q-num" style="font-size:28px;">2</div>
+                <div>
+                  <div class="q-label">Menos contexto, menos alucinação</div>
+                  <div class="q-text" style="font-size:12.5px;">Uma classe nova vs. 5 arquivos pra ler. Estrutura nomeada <strong style="color:var(--ink);">ancora</strong> o raciocínio.</div>
+                </div>
+              </div>
+              <div class="q-card" style="padding:12px 14px;">
+                <div class="q-num" style="font-size:28px;">3</div>
+                <div>
+                  <div class="q-label">Revisão mais barata</div>
+                  <div class="q-text" style="font-size:12.5px;">Você revisa uma classe pequena que <em>você já sabe onde encaixa</em>. Confiança sobe, erro cai.</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="corner-num">9</div>
+        <div class="corner-num">10</div>
       </div>
 
       <!-- ═══ SLIDE 10 — BLOCO 2b: FRASE-CHAVE ═══ -->
@@ -319,7 +385,7 @@
           </p>
           <p style="font-size:12px;color:var(--muted);margin-top:22px;font-style:italic;">Simon Willison e comunidade de agentic engineering · 2026</p>
         </div>
-        <div class="corner-num">10</div>
+        <div class="corner-num">11</div>
       </div>
 
       <!-- ═══ SLIDE 11 — BLOCO 3.1: STRATEGY INTENÇÃO ═══ -->
@@ -343,7 +409,7 @@
             </div>
           </div>
         </div>
-        <div class="corner-num">11</div>
+        <div class="corner-num">12</div>
       </div>
 
       <!-- ═══ SLIDE 12 — BLOCO 3.3: UML ESTRUTURA ═══ -->
@@ -385,7 +451,7 @@
             </div>
           </div>
         </div>
-        <div class="corner-num">12</div>
+        <div class="corner-num">13</div>
       </div>
 
       <!-- ═══ SLIDE 13 — BLOCO 3.4: POLIMORFISMO COM NOME ═══ -->
@@ -402,7 +468,7 @@
             O valor do padrão é <strong style="color:var(--ink);">comunicar</strong>: quando você diz <code class="inline">FreteStrategy</code>, qualquer leitor — humano ou agente — sabe imediatamente <em>por que</em> o polimorfismo está sendo usado ali.
           </p>
         </div>
-        <div class="corner-num">13</div>
+        <div class="corner-num">14</div>
       </div>
 
       <!-- ═══ SLIDE 14 — BLOCO 4: CENÁRIO DA DEMO ═══ -->
@@ -430,7 +496,7 @@
             <p style="font-size:14px;color:var(--ink2);line-height:1.5;"><strong style="color:var(--amber2);">E se amanhã</strong> o chefe pedir "adicione Loggi"? Vamos ver como cada abordagem responde.</p>
           </div>
         </div>
-        <div class="corner-num">14</div>
+        <div class="corner-num">15</div>
       </div>
 
       <!-- ═══ SLIDE 15 — BLOCO 4.1: CÓDIGO ANTES (ANTI-PATTERN) ═══ -->
@@ -467,7 +533,7 @@
             </div>
           </div>
         </div>
-        <div class="corner-num">15</div>
+        <div class="corner-num">16</div>
       </div>
 
       <!-- ═══ SLIDE 16 — BLOCO 4.2 PASSO 1: INTERFACE ═══ -->
@@ -492,7 +558,7 @@
             </div>
           </div>
         </div>
-        <div class="corner-num">16</div>
+        <div class="corner-num">17</div>
       </div>
 
       <!-- ═══ SLIDE 17 — BLOCO 4.2 PASSO 2: CLASSES CONCRETAS ═══ -->
@@ -543,7 +609,7 @@
           </div>
           <p style="font-size:13px;color:var(--ink2);margin-top:20px;line-height:1.5;">Cada classe é <strong style="color:var(--accent2);">testável isolada</strong>: <code class="inline">new FreteJadlog().calcular(2.0)</code> → <span style="color:var(--accent3);">11.0</span>. Nenhuma conhece as outras.</p>
         </div>
-        <div class="corner-num">17</div>
+        <div class="corner-num">18</div>
       </div>
 
       <!-- ═══ SLIDE 18 — BLOCO 4.2 PASSO 3: CONTEXT ═══ -->
@@ -581,7 +647,7 @@
             </div>
           </div>
         </div>
-        <div class="corner-num">18</div>
+        <div class="corner-num">19</div>
       </div>
 
       <!-- ═══ SLIDE 19 — BLOCO 4.2 PASSO 4: USO + OUTPUT ═══ -->
@@ -616,7 +682,7 @@
             </div>
           </div>
         </div>
-        <div class="corner-num">19</div>
+        <div class="corner-num">20</div>
       </div>
 
       <!-- ═══ SLIDE 20 — BLOCO 4.3 BÔNUS: LAMBDA ═══ -->
@@ -649,7 +715,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
             </div>
           </div>
         </div>
-        <div class="corner-num">20</div>
+        <div class="corner-num">21</div>
       </div>
 
       <!-- ═══ SLIDE 21 — BLOCO 5.1: RESUMO 3 FRASES ═══ -->
@@ -682,7 +748,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
             </li>
           </ul>
         </div>
-        <div class="corner-num">21</div>
+        <div class="corner-num">22</div>
       </div>
 
       <!-- ═══ SLIDE 22 — BLOCO 5.2: QUANDO NÃO USAR ═══ -->
@@ -707,7 +773,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
           </div>
           <p style="font-size:12px;color:var(--muted);margin-top:24px;font-style:italic;text-align:center;">Use padrões pra problemas que doem. Código simples que nunca cresce é ok ser simples.</p>
         </div>
-        <div class="corner-num">22</div>
+        <div class="corner-num">23</div>
       </div>
 
       <!-- ═══ SLIDE 23 — BLOCO 5.3+5.4: Q&A + GANCHO PRO BÔNUS ═══ -->
@@ -727,7 +793,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
           </div>
           <div style="margin-top:22px;font-size:11px;color:var(--muted);">Factory costuma aparecer junto — pra decidir <em>qual</em> Strategy instanciar.</div>
         </div>
-        <div class="corner-num">23</div>
+        <div class="corner-num">24</div>
       </div>
 
       <!-- ═══ SLIDE 24 — BLOCO 6: STRATEGY VS STATE ═══ -->
@@ -770,7 +836,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
             </div>
           </div>
         </div>
-        <div class="corner-num">24</div>
+        <div class="corner-num">25</div>
       </div>
 
       <!-- ═══ SLIDE 25 — CRÉDITOS E REFERÊNCIAS ═══ -->
@@ -808,7 +874,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
             </div>
           </div>
         </div>
-        <div class="corner-num">25</div>
+        <div class="corner-num">26</div>
       </div>
 
     </div>
@@ -835,43 +901,44 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
     <a class="toc-item" data-goto="1">2 · Sumário</a>
 
     <div class="toc-section">Bloco 0 — A dor real</div>
-    <a class="toc-item" data-goto="2">3 · Código feio</a>
-    <a class="toc-item" data-goto="3">4 · A realidade dos projetos</a>
+    <a class="toc-item" data-goto="2">3 · A pergunta</a>
+    <a class="toc-item" data-goto="3">4 · O código</a>
+    <a class="toc-item" data-goto="4">5 · A realidade dos projetos</a>
 
     <div class="toc-section">Bloco 1 — Padrões de projeto</div>
-    <a class="toc-item" data-goto="4">5 · Definição + GoF</a>
-    <a class="toc-item" data-goto="5">6 · O que não é</a>
+    <a class="toc-item" data-goto="5">6 · Definição + GoF</a>
+    <a class="toc-item" data-goto="6">7 · O catálogo</a>
 
     <div class="toc-section">Bloco 2 — Por que importam hoje</div>
-    <a class="toc-item" data-goto="6">7 · Colaboração humana</a>
-    <a class="toc-item" data-goto="7">8 · Agentic coding</a>
-    <a class="toc-item" data-goto="8">9 · 3 razões</a>
-    <a class="toc-item" data-goto="9">10 · Frameworks vs Padrões</a>
+    <a class="toc-item" data-goto="7">8 · Colaboração humana</a>
+    <a class="toc-item" data-goto="8">9 · Agentic coding</a>
+    <a class="toc-item" data-goto="9">10 · Pair programming + razões</a>
+    <a class="toc-item" data-goto="10">11 · Frameworks vs Padrões</a>
 
     <div class="toc-section">Bloco 3 — Strategy</div>
-    <a class="toc-item" data-goto="10">11 · Intenção</a>
-    <a class="toc-item" data-goto="11">12 · Estrutura UML</a>
-    <a class="toc-item" data-goto="12">13 · Polimorfismo com nome</a>
+    <a class="toc-item" data-goto="11">12 · Intenção</a>
+    <a class="toc-item" data-goto="12">13 · Estrutura UML</a>
+    <a class="toc-item" data-goto="13">14 · Polimorfismo com nome</a>
 
     <div class="toc-section">Bloco 4 — Demo Java</div>
-    <a class="toc-item" data-goto="13">14 · Cenário</a>
-    <a class="toc-item" data-goto="14">15 · Antes (anti-pattern)</a>
-    <a class="toc-item" data-goto="15">16 · Interface</a>
-    <a class="toc-item" data-goto="16">17 · Classes concretas</a>
-    <a class="toc-item" data-goto="17">18 · Context</a>
-    <a class="toc-item" data-goto="18">19 · Runtime + output</a>
-    <a class="toc-item" data-goto="19">20 · Bônus: lambda</a>
+    <a class="toc-item" data-goto="14">15 · Cenário</a>
+    <a class="toc-item" data-goto="15">16 · Antes (anti-pattern)</a>
+    <a class="toc-item" data-goto="16">17 · Interface</a>
+    <a class="toc-item" data-goto="17">18 · Classes concretas</a>
+    <a class="toc-item" data-goto="18">19 · Context</a>
+    <a class="toc-item" data-goto="19">20 · Runtime + output</a>
+    <a class="toc-item" data-goto="20">21 · Bônus: lambda</a>
 
     <div class="toc-section">Bloco 5 — Fechamento</div>
-    <a class="toc-item" data-goto="20">21 · Resumo</a>
-    <a class="toc-item" data-goto="21">22 · Quando NÃO usar</a>
-    <a class="toc-item" data-goto="22">23 · Q&amp;A + gancho</a>
+    <a class="toc-item" data-goto="21">22 · Resumo</a>
+    <a class="toc-item" data-goto="22">23 · Quando NÃO usar</a>
+    <a class="toc-item" data-goto="23">24 · Q&amp;A + gancho</a>
 
     <div class="toc-section">Bônus · Reserva</div>
-    <a class="toc-item" data-goto="23">24 · Strategy vs State</a>
+    <a class="toc-item" data-goto="24">25 · Strategy vs State</a>
 
     <div class="toc-section">Fim</div>
-    <a class="toc-item" data-goto="24">25 · Referências</a>
+    <a class="toc-item" data-goto="25">26 · Referências</a>
   </div>
 </div>
 

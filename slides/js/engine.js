@@ -19,6 +19,71 @@
     });
   }
 
+  // ─── Step reveal (teclas . e , — só em slides com data-steps) ───
+  let currentStep = 0;
+
+  function slideStepTotal(slide) {
+    const n = parseInt(slide.dataset.steps, 10);
+    return Number.isFinite(n) && n > 0 ? n : 0;
+  }
+
+  function scrollStepIntoView(slide) {
+    const activeEl = slide.querySelector('.step.active');
+    const pre = slide.querySelector('pre.code-block');
+    if (!activeEl || !pre) return;
+    const preRect = pre.getBoundingClientRect();
+    const elRect  = activeEl.getBoundingClientRect();
+    if (preRect.height === 0) return;
+    const scaler = document.getElementById('scaler');
+    const m = (scaler && scaler.style.transform || '').match(/scale\(([\d.]+)\)/);
+    const scale = m ? parseFloat(m[1]) : 1;
+    const relTop   = (elRect.top - preRect.top) / scale + pre.scrollTop;
+    const elHeight = elRect.height / scale;
+    const visibleH = pre.clientHeight;
+    const target   = relTop - Math.max(0, (visibleH - elHeight) / 2);
+    pre.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+  }
+
+  function applyStep(slide, step) {
+    const total = slideStepTotal(slide);
+    slide.querySelectorAll('.step').forEach(el => {
+      const n = parseInt(el.dataset.step, 10);
+      el.classList.remove('active', 'dim');
+      if (step > 0) el.classList.add(n === step ? 'active' : 'dim');
+    });
+    slide.querySelectorAll('.step-note').forEach(n => {
+      const s = parseInt(n.dataset.step, 10);
+      n.classList.toggle('active', step > 0 && s === step);
+    });
+    const ind = slide.querySelector('.step-indicator');
+    if (ind) {
+      ind.innerHTML = step > 0
+        ? `Passo ${step} / ${total} &nbsp; <kbd>,</kbd> voltar &nbsp; <kbd>.</kbd> próximo`
+        : `<kbd>.</kbd> destacar trechos &nbsp;·&nbsp; <kbd>,</kbd> voltar`;
+    }
+    if (step > 0) {
+      requestAnimationFrame(() => scrollStepIntoView(slide));
+    } else {
+      const pre = slide.querySelector('pre.code-block');
+      if (pre) pre.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function nextStep() {
+    const slide = slides[current];
+    const t = slideStepTotal(slide);
+    if (!t) return false;
+    if (currentStep < t) { currentStep++; applyStep(slide, currentStep); return true; }
+    return false;
+  }
+  function prevStep() {
+    const slide = slides[current];
+    const t = slideStepTotal(slide);
+    if (!t) return false;
+    if (currentStep > 0) { currentStep--; applyStep(slide, currentStep); return true; }
+    return false;
+  }
+
   function show(idx) {
     slides.forEach((s, i) => {
       s.classList.remove('active', 'exit-left', 'exit-right');
@@ -29,6 +94,8 @@
     counter.textContent = `${idx + 1} / ${total}`;
     localStorage.setItem(STORAGE_KEY, idx);
     updateTocActive(idx);
+    currentStep = 0;
+    if (slideStepTotal(slides[idx])) applyStep(slides[idx], 0);
   }
 
   function next() { if (!lightboxOpen && current < total - 1) { current++; show(current); } }
@@ -44,6 +111,8 @@
       if (e.key === 'ArrowLeft')  { e.preventDefault(); lbPrev(); }
       return;
     }
+    if (e.key === '.') { e.preventDefault(); nextStep(); return; }
+    if (e.key === ',') { e.preventDefault(); prevStep(); return; }
     if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
     if (e.key === 'ArrowLeft')  { e.preventDefault(); prev(); }
     if (e.key === 'Home') { current = 0; show(current); }
