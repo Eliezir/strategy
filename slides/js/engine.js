@@ -111,13 +111,14 @@
   document.getElementById('nav-prev').addEventListener('click', prev);
 
   function isModalOpen() {
-    return lightboxOpen || (typeof orchOpen !== 'undefined' && orchOpen);
+    return lightboxOpen || (typeof orchOpen !== 'undefined' && orchOpen) || kenjiOpen;
   }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (lightboxOpen) { closeLightbox(); return; }
       if (typeof orchOpen !== 'undefined' && orchOpen) { closeOrchModal(); return; }
+      if (kenjiOpen) { closeKenjiEgg(); return; }
     }
     if (lightboxOpen) {
       if (e.key === 'ArrowRight') { e.preventDefault(); lbNext(); }
@@ -128,6 +129,10 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); orchNext(); return; }
       if (e.key === 'ArrowLeft')  { e.preventDefault(); orchPrev(); return; }
       return;
+    }
+    if (kenjiOpen) { e.preventDefault(); return; }
+    if ((e.key === 'k' || e.key === 'K') && current === total - 1) {
+      e.preventDefault(); openKenjiEgg(); return;
     }
     if (e.key === '.') { e.preventDefault(); nextStep(); return; }
     if (e.key === ',') { e.preventDefault(); prevStep(); return; }
@@ -309,5 +314,59 @@
       document.documentElement.setAttribute('data-theme', nxt);
     }
     localStorage.setItem(THEME_KEY, nxt);
+  });
+
+  // ─── Easter egg: Parabéns Kenji (K no último slide) ───
+  const kenjiEgg      = document.getElementById('kenji-egg');
+  const kenjiConfetti = document.getElementById('kenji-confetti');
+  const kenjiCloseBtn = document.getElementById('kenji-close');
+  const kenjiModal    = document.getElementById('kenji-modal');
+  let   kenjiOpen     = false;
+
+  const CONFETTI_COLORS = [
+    '#10b981', '#34d399', '#6ee7b7',
+    '#fbbf24', '#f472b6', '#60a5fa',
+    '#f87171', '#c084fc', '#fde047'
+  ];
+
+  function spawnConfetti(count = 140) {
+    if (!kenjiConfetti) return;
+    kenjiConfetti.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const piece = document.createElement('span');
+      const size = 6 + Math.random() * 9;
+      const drift = (Math.random() - 0.5) * 240;
+      const rot = 360 + Math.random() * 720;
+      piece.style.left = (Math.random() * 100) + 'vw';
+      piece.style.width  = size + 'px';
+      piece.style.height = (size * 1.4) + 'px';
+      piece.style.background = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+      piece.style.borderRadius = Math.random() < 0.25 ? '50%' : '2px';
+      piece.style.animationDuration = (2.2 + Math.random() * 2.6) + 's';
+      piece.style.animationDelay = (Math.random() * 0.9) + 's';
+      piece.style.setProperty('--kx', drift + 'px');
+      piece.style.setProperty('--kr', rot + 'deg');
+      frag.appendChild(piece);
+    }
+    kenjiConfetti.appendChild(frag);
+  }
+
+  function openKenjiEgg() {
+    if (!kenjiEgg || kenjiOpen) return;
+    spawnConfetti();
+    kenjiEgg.classList.add('open');
+    kenjiOpen = true;
+  }
+  function closeKenjiEgg() {
+    if (!kenjiEgg) return;
+    kenjiEgg.classList.remove('open');
+    if (kenjiConfetti) kenjiConfetti.innerHTML = '';
+    kenjiOpen = false;
+  }
+
+  if (kenjiCloseBtn) kenjiCloseBtn.addEventListener('click', (e) => { e.stopPropagation(); closeKenjiEgg(); });
+  if (kenjiEgg) kenjiEgg.addEventListener('click', (e) => {
+    if (!kenjiModal || !kenjiModal.contains(e.target)) closeKenjiEgg();
   });
 })();
