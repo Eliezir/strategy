@@ -178,12 +178,19 @@ Tradução em linguagem humana:
 
 Sem Strategy, um objeto que precisa se comportar de formas diferentes acaba:
 - Cheio de `if/else` ou `switch` baseados em tipo/estado.
-- Impossível de estender sem modificar (**viola o Open/Closed Principle**).
+- Impossível de estender sem modificar (**viola o Open/Closed Principle de SOLID**).
 - Difícil de testar isoladamente — cada ramo é um cenário acoplado ao resto.
 
 **Princípios SOLID em jogo:**
-- **O (Open/Closed):** aberto pra extensão, fechado pra modificação. Strategy é a materialização deste princípio.
-- **S (Single Responsibility):** cada algoritmo numa classe → cada classe tem uma responsabilidade.
+O acrônimo SOLID representa os cinco princípios que facilitam o processo de desenvolvimento — o que facilita a manutenção e a expansão do software. Estes princípios são fundamentais na programação orientada a objetos e podem ser aplicados em qualquer linguagem que adote este paradigma.
+
+- **S — Single Responsibility Principle:** cada algoritmo em uma classe separada → cada classe tem uma única responsabilidade.
+- **O — Open-Closed Principle:** aberto pra extensão, fechado pra modificação. Strategy permite adicionar novos algoritmos sem alterar o código existente.
+
+**Outros Princípios de SOLID:**
+- **L — Liskov Substitution Principle (Princípio da substituição de Liskov)
+- **I — Interface Segregation Principle (Princípio da Segregação da Interface)
+- **D — Dependency Inversion Principle (Princípio da inversão da dependência)
 
 ### 3.3. Estrutura (2 min)
 
@@ -250,7 +257,7 @@ public class CalculadoraFrete {
 
 **Problemas a apontar em voz alta:**
 - **Strings mágicas.** Se alguém digitar "correios" em minúsculo, quebra.
-- **Cada nova transportadora = editar esta classe.** Viola OCP.
+- **Cada nova transportadora = editar esta classe.** Viola Open-Closed Principle (OCP).
 - **Lógica de cálculo acoplada.** Testar o cálculo da Jadlog exige instanciar `CalculadoraFrete` inteira.
 - **Cresce para sempre.** 3 hoje. 7 no ano que vem. 15 em dois anos. Aí vira o "if/else hell" que a gente mencionou antes.
 
