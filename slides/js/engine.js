@@ -98,17 +98,35 @@
     if (slideStepTotal(slides[idx])) applyStep(slides[idx], 0);
   }
 
-  function next() { if (!lightboxOpen && current < total - 1) { current++; show(current); } }
-  function prev() { if (!lightboxOpen && current > 0) { current--; show(current); } }
+  function next() {
+    if (lightboxOpen || (typeof orchOpen !== 'undefined' && orchOpen)) return;
+    if (current < total - 1) { current++; show(current); }
+  }
+  function prev() {
+    if (lightboxOpen || (typeof orchOpen !== 'undefined' && orchOpen)) return;
+    if (current > 0) { current--; show(current); }
+  }
 
   document.getElementById('nav-next').addEventListener('click', next);
   document.getElementById('nav-prev').addEventListener('click', prev);
 
+  function isModalOpen() {
+    return lightboxOpen || (typeof orchOpen !== 'undefined' && orchOpen);
+  }
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightboxOpen) { closeLightbox(); return; }
+    if (e.key === 'Escape') {
+      if (lightboxOpen) { closeLightbox(); return; }
+      if (typeof orchOpen !== 'undefined' && orchOpen) { closeOrchModal(); return; }
+    }
     if (lightboxOpen) {
       if (e.key === 'ArrowRight') { e.preventDefault(); lbNext(); }
       if (e.key === 'ArrowLeft')  { e.preventDefault(); lbPrev(); }
+      return;
+    }
+    if (typeof orchOpen !== 'undefined' && orchOpen) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); orchNext(); return; }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); orchPrev(); return; }
       return;
     }
     if (e.key === '.') { e.preventDefault(); nextStep(); return; }
@@ -225,6 +243,56 @@
       tocPanel.classList.remove('open');
     }
   });
+
+  // ─── Carousel modal (orchestrators) ───────────────────
+  const orchModal    = document.getElementById('carousel-modal');
+  const orchOpenBtn  = document.getElementById('orch-open-btn');
+  const orchCloseBtn = document.getElementById('carousel-modal-close');
+  const orchStage    = orchModal && orchModal.querySelector('.carousel-modal-stage');
+  const orchTrack    = document.getElementById('orch-track');
+  const orchPrevBtn  = document.getElementById('orch-prev');
+  const orchNextBtn  = document.getElementById('orch-next');
+  const orchDots     = orchModal ? orchModal.querySelectorAll('.carousel-dot') : [];
+  const ORCH_TOTAL   = orchDots.length || 3;
+  let   orchIndex    = 0;
+  let   orchOpen     = false;
+
+  function updateOrch() {
+    if (orchTrack) {
+      orchTrack.style.transform = `translateX(${-orchIndex * (100 / ORCH_TOTAL)}%)`;
+    }
+    orchDots.forEach((d, i) => d.classList.toggle('active', i === orchIndex));
+    if (orchPrevBtn) orchPrevBtn.disabled = orchIndex === 0;
+    if (orchNextBtn) orchNextBtn.disabled = orchIndex === ORCH_TOTAL - 1;
+  }
+  function orchGoTo(i) {
+    if (i < 0 || i >= ORCH_TOTAL) return;
+    orchIndex = i; updateOrch();
+  }
+  function orchNext() { if (orchIndex < ORCH_TOTAL - 1) { orchIndex++; updateOrch(); } }
+  function orchPrev() { if (orchIndex > 0) { orchIndex--; updateOrch(); } }
+
+  function openOrchModal() {
+    if (!orchModal) return;
+    orchIndex = 0;
+    updateOrch();
+    orchModal.classList.add('open');
+    orchOpen = true;
+  }
+  function closeOrchModal() {
+    if (!orchModal) return;
+    orchModal.classList.remove('open');
+    orchOpen = false;
+  }
+  if (orchOpenBtn)  orchOpenBtn.addEventListener('click', openOrchModal);
+  if (orchCloseBtn) orchCloseBtn.addEventListener('click', (e) => { e.stopPropagation(); closeOrchModal(); });
+  if (orchPrevBtn)  orchPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); orchPrev(); });
+  if (orchNextBtn)  orchNextBtn.addEventListener('click', (e) => { e.stopPropagation(); orchNext(); });
+  orchDots.forEach((d, i) => d.addEventListener('click', (e) => { e.stopPropagation(); orchGoTo(i); }));
+  if (orchModal)    orchModal.addEventListener('click', (e) => {
+    if (!orchStage || !orchStage.contains(e.target)) closeOrchModal();
+  });
+  updateOrch();
 
   // Theme toggle
   const THEME_KEY = 'strategy-theme';
