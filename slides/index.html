@@ -938,26 +938,33 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
           <div class="slide-tag">Bloco 6 · Trade-offs</div>
           <h2 class="section">Prós e contras</h2>
           <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:2px;">
             <div>
-              <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent3);margin-bottom:12px;">Prós</div>
-              <ul class="arrow-list" style="gap:12px;">
+              <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent3);margin-bottom:10px;">Prós</div>
+              <ul class="arrow-list" style="gap:9px;">
                 <li><div><strong style="color:var(--ink);">Troca em runtime</strong> — muda o algoritmo sem recompilar o cliente.</div></li>
                 <li><div><strong style="color:var(--ink);">Isolamento</strong> — cada algoritmo numa classe pequena e focada.</div></li>
-                <li><div><strong style="color:var(--ink);">Testes triviais</strong> — <code class="inline">new FreteJadlog().calcular(2.0)</code>, sem montar sistema inteiro.</div></li>
+                <li><div><strong style="color:var(--ink);">Testes triviais</strong> — <code class="inline">new FreteJadlog().calcular(2.0)</code>, sem montar sistema.</div></li>
                 <li><div><strong style="color:var(--ink);">Extensão sem modificação</strong> — OCP na prática, sem risco de regressão.</div></li>
               </ul>
             </div>
             <div>
-              <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--amber2);margin-bottom:12px;">Contras</div>
-              <ul class="x-list" style="gap:12px;">
+              <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--amber2);margin-bottom:10px;">Contras</div>
+              <ul class="x-list" style="gap:9px;">
                 <li><div><strong style="color:var(--ink);">Mais arquivos</strong> — 1 interface + N classes em vez de 1 classe com <code class="inline">if/else</code>.</div></li>
                 <li><div><strong style="color:var(--ink);">Cliente precisa saber escolher</strong> — alguém decide qual estratégia usar (daí Factory às vezes vir junto).</div></li>
                 <li><div><strong style="color:var(--ink);">Over-engineering em domínio estável</strong> — 2 algoritmos que nunca vão virar 5 custam mais do que entregam.</div></li>
               </ul>
             </div>
           </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:20px;font-style:italic;text-align:center;">Trade-off aceito quando a variação tende a crescer ao longo do tempo.</p>
+          <!-- Evidência visual do "Mais arquivos" -->
+          <div style="display:flex;align-items:center;gap:20px;margin-top:14px;padding:10px 16px;background:#fafefb;border:1px solid #c9e4d3;border-radius:10px;box-shadow:0 2px 10px rgba(15,36,25,.05);">
+            <img src="img/files-comparison.png" alt="Comparação — sem Strategy: 2 arquivos (CalculadoraFrete.java + Main.java) · com Strategy: 7 arquivos (FreteStrategy + 4 concretas + Carrinho + Main)" style="max-height:130px;width:auto;border-radius:6px;box-shadow:0 4px 14px rgba(15,36,25,.15);flex-shrink:0;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-weight:600;">o preço da extensibilidade</div>
+              <div style="font-size:13.5px;color:var(--ink);line-height:1.5;">De <strong style="color:#b91c1c;">2 arquivos</strong> para <strong style="color:var(--accent2);">7 arquivos</strong>. O custo é <em>número de classes</em>; o ganho é <em>estender sem tocar no que já roda</em>.</div>
+            </div>
+          </div>
         </div>
         <div class="corner-num">24</div>
       </div>
