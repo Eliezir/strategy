@@ -134,9 +134,9 @@
         <div class="corner-num">2</div>
       </div>
 
-      <!-- ═══ SLIDE 3 — BLOCO 1.1: DEFINIÇÃO + TEASER DAS ANALOGIAS ═══ -->
+      <!-- ═══ SLIDE 3 — BLOCO 1.1: DEFINIÇÃO ═══ -->
       <div class="slide s-dark">
-        <div class="slide-inner">
+        <div class="slide-inner" style="justify-content:center;">
           <div class="slide-tag">Bloco 1 · Fundamentos</div>
           <h2 class="section">O que são padrões de projeto</h2>
           <div class="divider"></div>
@@ -144,27 +144,10 @@
             <p class="def-text">"Soluções reutilizáveis e <strong style="color:var(--accent2);">nomeadas</strong> para problemas que aparecem repetidamente no design de sistemas orientados a objetos."</p>
             <p class="def-src">Não é código pronto — é uma <strong style="color:var(--accent2);">receita</strong> pra resolver um tipo de problema.</p>
           </div>
-          <p style="font-size:14px;color:var(--ink2);line-height:1.6;max-width:820px;margin-top:6px;">
-            Pra fixar, três analogias do mundo real. Cada uma mostra uma <strong style="color:var(--ink);">propriedade diferente</strong> do que é um padrão — e no final, tudo volta pra <em style="color:var(--accent2);font-style:normal;">uma ideia só</em>.
+          <p style="font-size:15px;color:var(--ink2);line-height:1.65;max-width:860px;margin-top:18px;">
+            Pra fixar a ideia, três analogias do mundo real. Cada uma mostra uma <strong style="color:var(--ink);">propriedade diferente</strong> do que é um padrão — e no final, tudo volta pra <em style="color:var(--accent2);font-style:normal;">uma ideia só</em>: estrutura nomeada, reutilizada, adaptada ao contexto.
           </p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;">
-            <div class="card" style="text-align:center;">
-              <div style="font-size:40px;line-height:1;margin-bottom:8px;">🎂</div>
-              <div class="card-title">Analogia 1</div>
-              <div class="card-body" style="font-size:15px;color:var(--ink);font-family:'Cormorant Garamond',serif;font-style:italic;">Receita de bolo</div>
-            </div>
-            <div class="card" style="text-align:center;">
-              <div style="font-size:40px;line-height:1;margin-bottom:8px;">⚽</div>
-              <div class="card-title">Analogia 2</div>
-              <div class="card-body" style="font-size:15px;color:var(--ink);font-family:'Cormorant Garamond',serif;font-style:italic;">Tiki-taka</div>
-            </div>
-            <div class="card" style="text-align:center;border-color:var(--accent);">
-              <div style="font-size:40px;line-height:1;margin-bottom:8px;">♛</div>
-              <div class="card-title" style="color:var(--accent3);">Analogia 3</div>
-              <div class="card-body" style="font-size:15px;color:var(--ink);font-family:'Cormorant Garamond',serif;font-style:italic;">Xadrez</div>
-            </div>
-          </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center;">→ próximos três slides</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:30px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;">→ próximos três slides</p>
         </div>
         <div class="corner-num">3</div>
       </div>
@@ -175,21 +158,18 @@
           <div class="slide-tag">Bloco 1 · Analogia 1 de 3 · Receita</div>
           <h2 class="section">A receita <em style="color:var(--accent2);font-style:normal;">é</em> a receita — não o bolo</h2>
           <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:30px;align-items:center;">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;margin-top:4px;">
             <!-- Recipe card illustration -->
             <div class="recipe-card">
-              <div class="recipe-stamp">da Vó Maria · 1952</div>
               <div class="recipe-title">Bolo de Chocolate</div>
-              <div class="recipe-subtitle">· serve 8 pessoas ·</div>
+              <div class="recipe-subtitle">· da Vó Maria · 1952 ·</div>
               <div class="recipe-divider"></div>
               <div class="recipe-section">
                 <h4>Ingredientes</h4>
                 <ul>
                   <li>3 ovos</li>
                   <li>2 xícaras de farinha</li>
-                  <li>1 xícara de açúcar</li>
-                  <li>½ xícara de chocolate em pó</li>
-                  <li>1 colher de fermento</li>
+                  <li>1 xícara de chocolate em pó</li>
                 </ul>
               </div>
               <div class="recipe-divider"></div>
@@ -197,20 +177,19 @@
                 <h4>Modo de preparo</h4>
                 <ol>
                   <li>Bata as claras em neve</li>
-                  <li>Misture com as gemas e o açúcar</li>
-                  <li>Acrescente farinha e chocolate</li>
+                  <li>Misture tudo e despeje na forma</li>
                   <li>Asse por 35 min a 180°C</li>
                 </ol>
               </div>
             </div>
             <!-- Right: explanation -->
             <div>
-              <ul class="arrow-list" style="gap:12px;">
+              <ul class="arrow-list" style="gap:10px;">
                 <li><div>Dois cozinheiros seguindo a <strong style="color:var(--ink);">mesma receita</strong> fazem bolos <em>levemente diferentes</em> — um mais fofo, outro mais denso.</div></li>
                 <li><div>Os dois são <strong style="color:var(--ink);">reconhecidamente</strong> "Bolo de Chocolate da Vó Maria".</div></li>
-                <li><div>A receita <strong style="color:var(--accent2);">guia</strong>, não obriga. Cada um adapta ao forno, aos ingredientes, à ocasião.</div></li>
+                <li><div>A receita <strong style="color:var(--accent2);">guia</strong>, não obriga — cada um adapta ao forno e à ocasião.</div></li>
               </ul>
-              <div class="analogy-insight" style="margin-top:18px;padding:14px 18px;background:rgba(16,185,129,.06);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;">
+              <div class="analogy-insight" style="margin-top:14px;padding:12px 16px;background:rgba(16,185,129,.06);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;font-size:18px;">
                 O padrão é a <strong>receita</strong>.<br>
                 O código que você escreve é o <strong>bolo</strong>.
               </div>
@@ -224,9 +203,9 @@
       <div class="slide s-dark">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 1 · Analogia 2 de 3 · Tiki-taka</div>
-          <h2 class="section">Tiki-taka — posse, passes curtos, movimentação</h2>
+          <h2 class="section">Tiki-taka</h2>
           <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;margin-top:4px;">
             <!-- Football pitch SVG -->
             <div class="pitch-wrap">
               <div class="pitch">
@@ -235,66 +214,59 @@
                     <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
                       <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffffff" opacity="0.9"/>
                     </marker>
+                    <!-- Path for ball animation -->
+                    <path id="tiki-path" d="M 150 260 Q 100 240 80 210 Q 70 170 110 145 Q 150 130 190 145 Q 220 180 150 260" fill="none"/>
                   </defs>
                   <!-- Pitch markings -->
                   <g fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85">
-                    <!-- Halfway line -->
                     <line x1="10" y1="200" x2="290" y2="200"/>
-                    <!-- Center circle -->
                     <circle cx="150" cy="200" r="38"/>
                     <circle cx="150" cy="200" r="2" fill="#ffffff"/>
-                    <!-- Top penalty box -->
                     <rect x="70" y="10" width="160" height="60"/>
-                    <!-- Top 6-yard box -->
                     <rect x="110" y="10" width="80" height="22"/>
-                    <!-- Bottom penalty box -->
                     <rect x="70" y="330" width="160" height="60"/>
-                    <!-- Bottom 6-yard box -->
                     <rect x="110" y="368" width="80" height="22"/>
-                    <!-- Top D -->
                     <path d="M 125 70 Q 150 100 175 70"/>
-                    <!-- Bottom D -->
                     <path d="M 125 330 Q 150 300 175 330"/>
                   </g>
-                  <!-- Passing arrows (tiki-taka triangulation) -->
-                  <g>
-                    <path d="M 150 260 Q 100 240 80 210" class="pitch-arrow" fill="none" stroke="#fff59e" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrowhead)" opacity="0.85"/>
-                    <path d="M 80 210 Q 70 170 110 145" class="pitch-arrow" fill="none" stroke="#fff59e" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrowhead)" opacity="0.85"/>
-                    <path d="M 110 145 Q 150 130 190 145" class="pitch-arrow" fill="none" stroke="#fff59e" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrowhead)" opacity="0.85"/>
-                    <path d="M 190 145 Q 220 180 150 260" class="pitch-arrow" fill="none" stroke="#fff59e" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrowhead)" opacity="0.85"/>
+                  <!-- Passing triangulation paths (visible) -->
+                  <g fill="none" stroke="#fff59e" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arrowhead)" opacity="0.85">
+                    <path d="M 150 260 Q 100 240 80 210"/>
+                    <path d="M 80 210 Q 70 170 110 145"/>
+                    <path d="M 110 145 Q 150 130 190 145"/>
+                    <path d="M 190 145 Q 220 180 150 260"/>
                   </g>
                   <!-- Players -->
                   <g>
-                    <!-- Forwards -->
                     <circle cx="70" cy="100" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
                     <circle cx="150" cy="85"  r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
                     <circle cx="230" cy="100" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
-                    <!-- Midfielders -->
                     <circle cx="110" cy="145" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
                     <circle cx="190" cy="145" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
                     <circle cx="150" cy="260" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
-                    <!-- Defenders -->
                     <circle cx="80"  cy="210" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
                     <circle cx="140" cy="320" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
                     <circle cx="220" cy="210" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
                     <circle cx="160" cy="320" r="7" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
-                    <!-- GK -->
                     <circle cx="150" cy="370" r="7" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
                   </g>
+                  <!-- Animated ball traveling the triangulation path -->
+                  <circle r="4.5" fill="#ffffff" stroke="#1a1a1a" stroke-width="0.8">
+                    <animateMotion dur="4.5s" repeatCount="indefinite">
+                      <mpath xlink:href="#tiki-path"/>
+                    </animateMotion>
+                  </circle>
                 </svg>
               </div>
-              <div class="pitch-caption">FC Barcelona · 2008–2012</div>
+              <div class="pitch-caption">triangulação — passes curtos</div>
             </div>
             <!-- Right: explanation -->
             <div>
-              <p style="font-size:14px;color:var(--ink2);line-height:1.6;margin-bottom:14px;">
-                Estilo de jogo caracterizado por <strong style="color:var(--ink);">manutenção da posse de bola</strong>, movimentação constante e troca rápida de passes curtos e rasteiros. Popularizado pelo <strong style="color:var(--ink);">Barcelona</strong> e pela <strong style="color:var(--ink);">seleção espanhola (2008–2012)</strong>.
+              <p style="font-size:18px;color:var(--ink);line-height:1.55;font-family:'Cormorant Garamond',serif;margin-bottom:20px;">
+                Estilo de jogo onde os jogadores estão <strong style="color:var(--accent2);font-weight:600;">constantemente se movendo</strong> e tocando a bola entre si.
               </p>
-              <div class="analogy-quote">
-                "Vamos manter posse entre os três meio-campistas, recompor rapidamente após perda, triangular com laterais, atrair pressão e trocar o lado quando o adversário se comprometer…"
-              </div>
-              <p style="font-size:14px;color:var(--ink2);line-height:1.6;margin:14px 0 10px;">… ou o treinador simplesmente fala:</p>
-              <div style="text-align:center;margin:8px 0 14px;">
+              <p style="font-size:14px;color:var(--ink2);line-height:1.6;margin-bottom:10px;">Em vez de listar 11 posições e uma filosofia de jogo, o treinador fala:</p>
+              <div style="text-align:center;margin:12px 0 18px;">
                 <span class="analogy-shortcut">"joga tiki-taka"</span>
               </div>
               <div class="analogy-insight">
@@ -306,106 +278,80 @@
         <div class="corner-num">5</div>
       </div>
 
-      <!-- ═══ SLIDE 6 — ANALOGIA 3: XADREZ (ABERTURA ITALIANA) ═══ -->
+      <!-- ═══ SLIDE 6 — ANALOGIA 3: XADREZ (ABERTURA ITALIANA) — TABULEIRO ANIMADO ═══ -->
       <div class="slide s-dark">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 1 · Analogia 3 de 3 · Xadrez</div>
           <h2 class="section">"Abertura Italiana" — <em style="color:var(--ink2);font-style:normal;font-size:.8em;">ou lance-a-lance</em></h2>
           <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;">
-            <!-- Chess board -->
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;margin-top:4px;">
+            <!-- Chess board (animated) -->
             <div class="chess-wrap">
               <div class="chess-board">
-                <!-- Rank 8 -->
-                <div class="chess-square L"><span class="chess-piece b">♜</span></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"><span class="chess-piece b">♝</span></div>
-                <div class="chess-square D"><span class="chess-piece b">♛</span></div>
-                <div class="chess-square L"><span class="chess-piece b">♚</span></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"><span class="chess-piece b">♞</span></div>
-                <div class="chess-square D"><span class="chess-piece b">♜</span></div>
-                <!-- Rank 7 -->
-                <div class="chess-square D"><span class="chess-piece b">♟</span></div>
-                <div class="chess-square L"><span class="chess-piece b">♟</span></div>
-                <div class="chess-square D"><span class="chess-piece b">♟</span></div>
-                <div class="chess-square L"><span class="chess-piece b">♟</span></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"><span class="chess-piece b">♟</span></div>
-                <div class="chess-square D"><span class="chess-piece b">♟</span></div>
-                <div class="chess-square L"><span class="chess-piece b">♟</span></div>
-                <!-- Rank 6 -->
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"><span class="chess-piece b">♞</span></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <!-- Rank 5 -->
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"><span class="chess-piece b">♝</span></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D hl"><span class="chess-piece b">♟</span></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <!-- Rank 4 -->
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"><span class="chess-piece w">♗</span></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L hl"><span class="chess-piece w">♙</span></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <!-- Rank 3 -->
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"><span class="chess-piece w">♘</span></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"></div>
-                <!-- Rank 2 -->
-                <div class="chess-square L"><span class="chess-piece w">♙</span></div>
-                <div class="chess-square D"><span class="chess-piece w">♙</span></div>
-                <div class="chess-square L"><span class="chess-piece w">♙</span></div>
-                <div class="chess-square D"><span class="chess-piece w">♙</span></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"><span class="chess-piece w">♙</span></div>
-                <div class="chess-square L"><span class="chess-piece w">♙</span></div>
-                <div class="chess-square D"><span class="chess-piece w">♙</span></div>
-                <!-- Rank 1 -->
-                <div class="chess-square D"><span class="chess-piece w">♖</span></div>
-                <div class="chess-square L"><span class="chess-piece w">♘</span></div>
-                <div class="chess-square D"><span class="chess-piece w">♗</span></div>
-                <div class="chess-square L"><span class="chess-piece w">♕</span></div>
-                <div class="chess-square D"><span class="chess-piece w">♔</span></div>
-                <div class="chess-square L"></div>
-                <div class="chess-square D"></div>
-                <div class="chess-square L"><span class="chess-piece w">♖</span></div>
+                <!-- 64 empty square backgrounds (checkerboard) -->
+                <div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div>
+                <div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div>
+                <div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div>
+                <div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div>
+                <div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div>
+                <div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div>
+                <div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div>
+                <div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div><div class="chess-square D"></div><div class="chess-square L"></div>
+                <!-- Pieces layer (absolute positioned) -->
+                <div class="chess-pieces">
+                  <!-- Rank 8 static: ♜ _ ♝ ♛ ♚ _ _ ♜ (b8 & f8 animated) -->
+                  <span class="cp b" style="left:0;top:0;">♜</span>
+                  <span class="cp b" style="left:64px;top:0;">♝</span>
+                  <span class="cp b" style="left:96px;top:0;">♛</span>
+                  <span class="cp b" style="left:128px;top:0;">♚</span>
+                  <span class="cp b" style="left:192px;top:0;">♞</span>
+                  <span class="cp b" style="left:224px;top:0;">♜</span>
+                  <!-- Rank 7 static pawns (e7 animated) -->
+                  <span class="cp b" style="left:0;top:32px;">♟</span>
+                  <span class="cp b" style="left:32px;top:32px;">♟</span>
+                  <span class="cp b" style="left:64px;top:32px;">♟</span>
+                  <span class="cp b" style="left:96px;top:32px;">♟</span>
+                  <span class="cp b" style="left:160px;top:32px;">♟</span>
+                  <span class="cp b" style="left:192px;top:32px;">♟</span>
+                  <span class="cp b" style="left:224px;top:32px;">♟</span>
+                  <!-- Rank 2 static pawns (e2 animated) -->
+                  <span class="cp w" style="left:0;top:192px;">♙</span>
+                  <span class="cp w" style="left:32px;top:192px;">♙</span>
+                  <span class="cp w" style="left:64px;top:192px;">♙</span>
+                  <span class="cp w" style="left:96px;top:192px;">♙</span>
+                  <span class="cp w" style="left:160px;top:192px;">♙</span>
+                  <span class="cp w" style="left:192px;top:192px;">♙</span>
+                  <span class="cp w" style="left:224px;top:192px;">♙</span>
+                  <!-- Rank 1 static: ♖ ♘ ♗ ♕ ♔ _ _ ♖ (f1 & g1 animated) -->
+                  <span class="cp w" style="left:0;top:224px;">♖</span>
+                  <span class="cp w" style="left:32px;top:224px;">♘</span>
+                  <span class="cp w" style="left:64px;top:224px;">♗</span>
+                  <span class="cp w" style="left:96px;top:224px;">♕</span>
+                  <span class="cp w" style="left:128px;top:224px;">♔</span>
+                  <span class="cp w" style="left:224px;top:224px;">♖</span>
+                  <!-- Peças nas posições finais da Abertura Italiana -->
+                  <span class="cp w" style="left:128px;top:128px;">♙</span>  <!-- e4 -->
+                  <span class="cp b" style="left:128px;top:96px;">♟</span>   <!-- e5 -->
+                  <span class="cp w" style="left:160px;top:160px;">♘</span>  <!-- Nf3 -->
+                  <span class="cp b" style="left:64px;top:64px;">♞</span>    <!-- Nc6 -->
+                  <span class="cp w" style="left:64px;top:128px;">♗</span>   <!-- Bc4 -->
+                  <span class="cp b" style="left:64px;top:96px;">♝</span>    <!-- Bc5 -->
+                </div>
               </div>
-              <div class="chess-caption">Giuoco Piano</div>
+              <div class="chess-caption">Giuoco Piano — 1.e4 e5 · 2.Nf3 Nc6 · 3.Bc4 Bc5</div>
             </div>
             <!-- Right: comparison -->
             <div>
-              <p style="font-size:13.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;">Opção A — lance-a-lance</p>
+              <p style="font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;">Opção A — lance-a-lance</p>
               <div class="analogy-quote">
-                "Peão-rei avança duas casas, preto espelha com peão-rei. Cavalo-rei sai pra f3 atacando o peão central; preto defende com cavalo-dama em c6. Bispo-rei sai pra c4 mirando f7; preto responde com bispo em c5…"
+                "Peão-rei avança duas casas, preto espelha. Cavalo-rei sai pra f3 atacando o centro; preto defende com cavalo-dama em c6. Bispo-rei sai pra c4; preto responde com bispo em c5…"
               </div>
-              <p style="font-size:13.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin:18px 0 8px;">Opção B — o nome</p>
+              <p style="font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin:18px 0 8px;">Opção B — o nome</p>
               <div style="text-align:center;margin-bottom:14px;">
                 <span class="analogy-shortcut">"Abertura Italiana"</span>
               </div>
-              <p style="font-size:13px;color:var(--ink2);line-height:1.6;">
-                Mesma posição exata. Quem joga xadrez já reconhece, já sabe os planos típicos, <strong style="color:var(--ink);">já planeja as próximas 5 jogadas</strong>.
-              </p>
-              <div class="analogy-insight" style="margin-top:14px;padding:12px 16px;background:rgba(16,185,129,.06);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;font-size:16px;">
-                Dizer <code class="inline">FreteStrategy</code> no código é <strong>a mesma coisa</strong>.
+              <div class="analogy-insight" style="margin-top:10px;padding:12px 16px;background:rgba(16,185,129,.06);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;font-size:17px;">
+                Usar o padrão <strong>Strategy</strong> é a mesma coisa.
               </div>
             </div>
           </div>
@@ -578,7 +524,7 @@
               <div class="step-note" data-step="7"><strong>"adicionado ontem".</strong> E o ciclo continua. A cada sprint, um frete novo no mesmo arquivo, com o mesmo dono que vira gargalo.</div>
               <div class="step-note" data-step="8"><strong>Fallback por exceção.</strong> Se alguém digitar <code class="inline">"correios"</code> minúsculo, <em>boom</em> em produção. Sem teste unitário dá pra perceber?</div>
             </div>
-            <div class="step-indicator" style="position:static;flex-shrink:0;align-self:flex-start;margin-top:2px;"><kbd>.</kbd> destacar &nbsp;·&nbsp; <kbd>,</kbd> voltar</div>
+            <div class="step-indicator" style="position:static;flex-shrink:0;align-self:flex-start;margin-top:2px;"><button class="step-kbd-btn" data-action="next" type="button"><kbd>.</kbd> destacar &nbsp; </button><button class="step-kbd-btn" data-action="prev" type="button"><kbd>,</kbd> voltar</button></div>
           </div>
         </div>
         <div class="corner-num">12</div>
@@ -588,7 +534,7 @@
       <div class="slide s-dark">
         <div class="slide-inner">
           <div class="slide-tag">Bloco 3 · Os cinco problemas</div>
-          <h2 class="section">Por que esse código dói</h2>
+          <h2 class="section">Por que esse código é problemático?</h2>
           <div class="divider"></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
             <div class="card" style="border-left:3px solid var(--red);">
@@ -622,13 +568,10 @@
           <div class="slide-tag">Bloco 3 · A solução</div>
           <h2 class="section">Encapsular cada algoritmo numa classe própria</h2>
           <div class="divider"></div>
-          <p style="font-size:14px;color:var(--ink2);line-height:1.6;max-width:880px;margin:4px 0 18px;">
-            A ideia central do Strategy: em vez de manter todos os algoritmos dentro de uma classe com <code class="inline">if/else</code>, <strong style="color:var(--ink);">cada algoritmo vira uma classe própria</strong> implementando uma interface comum. O objeto que precisa apenas <strong style="color:var(--accent2);">delega</strong>.
-          </p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;">
-            <div class="card" style="border-left:3px solid var(--red);display:flex;flex-direction:column;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;margin-top:4px;">
+            <div class="card" style="border-left:3px solid var(--red);display:flex;flex-direction:column;padding:14px 16px;">
               <div class="card-title" style="color:var(--red2);">Antes</div>
-              <pre class="code-block bad" style="font-size:11px;margin:10px 0 0;padding:14px 16px;"><span class="tok-kw">class</span> <span class="tok-ty">CalculadoraFrete</span> {
+              <pre class="code-block bad" style="font-size:10.5px;margin:8px 0 0;padding:12px 14px;"><span class="tok-kw">class</span> <span class="tok-ty">CalculadoraFrete</span> {
   <span class="tok-mt">calcular</span>(tipo, peso) {
     <span class="tok-kw">if</span> (tipo == <span class="tok-str">"CORREIOS"</span>) ...
     <span class="tok-kw">if</span> (tipo == <span class="tok-str">"JADLOG"</span>)   ...
@@ -637,9 +580,9 @@
   }
 }</pre>
             </div>
-            <div class="card" style="border-left:3px solid var(--accent);display:flex;flex-direction:column;">
+            <div class="card" style="border-left:3px solid var(--accent);display:flex;flex-direction:column;padding:14px 16px;">
               <div class="card-title" style="color:var(--accent3);">Depois</div>
-              <pre class="code-block good" style="font-size:11px;margin:10px 0 0;padding:14px 16px;"><span class="tok-kw">class</span> <span class="tok-ty">Carrinho</span> { <span class="tok-ty">FreteStrategy</span> frete; }
+              <pre class="code-block good" style="font-size:10.5px;margin:8px 0 0;padding:12px 14px;"><span class="tok-kw">class</span> <span class="tok-ty">Carrinho</span> { <span class="tok-ty">FreteStrategy</span> frete; }
 
 <span class="tok-kw">interface</span> <span class="tok-ty">FreteStrategy</span> { <span class="tok-mt">calcular</span>(peso); }
 
@@ -648,9 +591,9 @@
 <span class="tok-kw">class</span> <span class="tok-ty">FreteRetirada</span>  <span class="tok-kw">implements</span> <span class="tok-ty">FreteStrategy</span> { ... }</pre>
             </div>
           </div>
-          <ul class="arrow-list" style="margin-top:18px;gap:8px;">
-            <li><div>Adicionar <strong style="color:var(--accent2);">Loggi</strong> amanhã = criar <strong style="color:var(--ink);">uma classe nova</strong>. Zero alteração no <code class="inline">Carrinho</code>.</div></li>
-            <li><div>Testar Jadlog: <code class="inline">new FreteJadlog().calcular(2.0)</code>. Sem montar sistema inteiro.</div></li>
+          <ul class="arrow-list" style="margin-top:12px;gap:6px;">
+            <li><div>Adicionar <strong style="color:var(--accent2);">Loggi</strong> amanhã = <strong style="color:var(--ink);">uma classe nova</strong>. Zero alteração no <code class="inline">Carrinho</code>.</div></li>
+            <li><div>Testar isolado: <code class="inline">new FreteJadlog().calcular(2.0)</code>. Sem montar sistema inteiro.</div></li>
             <li><div>O <code class="inline">Carrinho</code> <strong style="color:var(--ink);">não conhece</strong> as implementações — só a interface.</div></li>
           </ul>
         </div>
@@ -841,7 +784,7 @@ carrinho.<span class="tok-mt">setFrete</span>(<span class="tok-kw">new</span> <s
           <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:center;">
             <div>
               <span class="code-label good">context</span>
-              <pre class="code-block good" style="font-size:11.5px;"><span class="tok-kw">import</span> java.util.<span class="tok-ty">Objects</span>;
+              <pre class="code-block good" style="font-size:11.5px;max-height:360px;overflow:auto;"><span class="tok-kw">import</span> java.util.<span class="tok-ty">Objects</span>;
 
 <span class="tok-kw">public class</span> <span class="tok-ty">Carrinho</span> {
 
@@ -1064,98 +1007,102 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
         <div class="corner-num">26</div>
       </div>
 
-      <!-- ═══ SLIDE 24 — BLOCO 8: QUIZ PERGUNTA 1 ═══ -->
+      <!-- ═══ QUIZ · PERGUNTA 1 DE 2 — INTERATIVO ═══ -->
       <div class="slide s-dark">
         <div class="slide-inner">
-          <div class="slide-tag">Bloco 8 · Mini quiz · Pergunta 1 de 3</div>
-          <h2 class="section">Reconhecer o problema</h2>
+          <div class="slide-tag">Bloco 8 · Mini quiz · Pergunta 1 de 2</div>
+          <h2 class="section">Em qual desses códigos <em style="color:var(--accent2);font-style:normal;">Strategy</em> resolve o problema?</h2>
           <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:center;">
-            <div>
-              <p style="font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Esse código pede qual padrão?</p>
-              <pre class="code-block bad" style="font-size:12.5px;"><span class="tok-kw">if</span> (usuario.tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"ADMIN"</span>))
-    usuario.<span class="tok-mt">fullAccess</span>();
-<span class="tok-kw">else if</span> (usuario.tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"EDITOR"</span>))
-    usuario.<span class="tok-mt">limitedAccess</span>();
-<span class="tok-kw">else if</span> (usuario.tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"VIEWER"</span>))
-    usuario.<span class="tok-mt">readOnly</span>();</pre>
+          <div class="quiz-interactive" data-correct="A">
+            <div class="quiz-cards">
+              <div class="quiz-card" data-option="A">
+                <div class="quiz-card-label"><span class="quiz-card-letter">A</span>Código A</div>
+                <pre class="code-block bad" style="font-size:10px;padding:8px 12px;margin:0;line-height:1.55;"><span class="tok-kw">double</span> <span class="tok-mt">calcular</span>(<span class="tok-ty">String</span> tipo, <span class="tok-kw">double</span> peso) {
+  <span class="tok-kw">if</span> (tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"CORREIOS"</span>)) <span class="tok-kw">return</span> peso*<span class="tok-num">2.5</span>+<span class="tok-num">10</span>;
+  <span class="tok-kw">if</span> (tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"JADLOG"</span>))   <span class="tok-kw">return</span> peso*<span class="tok-num">3.0</span>+<span class="tok-num">5</span>;
+  <span class="tok-kw">if</span> (tipo.<span class="tok-mt">equals</span>(<span class="tok-str">"RETIRADA"</span>)) <span class="tok-kw">return</span> <span class="tok-num">0</span>;
+}</pre>
+              </div>
+              <div class="quiz-card" data-option="B">
+                <div class="quiz-card-label"><span class="quiz-card-letter">B</span>Código B</div>
+                <pre class="code-block bad" style="font-size:10px;padding:8px 12px;margin:0;line-height:1.55;"><span class="tok-kw">void</span> <span class="tok-mt">processar</span>(<span class="tok-ty">Pedido</span> p) {
+  <span class="tok-kw">if</span> (p.estado == <span class="tok-ty">PENDENTE</span>) <span class="tok-mt">aguardar</span>(p);
+  <span class="tok-kw">if</span> (p.estado == <span class="tok-ty">PAGO</span>)      <span class="tok-mt">separar</span>(p);
+  <span class="tok-kw">if</span> (p.estado == <span class="tok-ty">ENVIADO</span>)   <span class="tok-mt">entregar</span>(p);
+}</pre>
+              </div>
+              <div class="quiz-card" data-option="C">
+                <div class="quiz-card-label"><span class="quiz-card-letter">C</span>Código C</div>
+                <pre class="code-block bad" style="font-size:10px;padding:8px 12px;margin:0;line-height:1.55;"><span class="tok-kw">void</span> <span class="tok-mt">salvar</span>(<span class="tok-ty">Usuario</span> u) {
+  <span class="tok-kw">if</span> (u.nome  == <span class="tok-kw">null</span>) <span class="tok-kw">throw new</span> <span class="tok-ty">Erro</span>();
+  <span class="tok-kw">if</span> (u.email == <span class="tok-kw">null</span>) <span class="tok-kw">throw new</span> <span class="tok-ty">Erro</span>();
+  <span class="tok-kw">if</span> (u.idade &lt; <span class="tok-num">18</span>)   <span class="tok-kw">throw new</span> <span class="tok-ty">Erro</span>();
+  repo.<span class="tok-mt">save</span>(u);
+}</pre>
+              </div>
+              <div class="quiz-card" data-option="D">
+                <div class="quiz-card-label"><span class="quiz-card-letter">D</span>Código D</div>
+                <pre class="code-block bad" style="font-size:10px;padding:8px 12px;margin:0;line-height:1.55;"><span class="tok-kw">void</span> <span class="tok-mt">onPedidoCriado</span>(<span class="tok-ty">Pedido</span> p) {
+  email.<span class="tok-mt">enviar</span>(p);
+  estoque.<span class="tok-mt">reservar</span>(p);
+  analytics.<span class="tok-mt">track</span>(p);
+  auditLog.<span class="tok-mt">registrar</span>(p);
+}</pre>
+              </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div class="card"><div class="card-body"><strong style="color:var(--ink);">(a)</strong> &nbsp; Singleton</div></div>
-              <div class="card" style="border-color:var(--accent);border-left:3px solid var(--accent);background:rgba(16,185,129,0.06);"><div class="card-body"><strong style="color:var(--accent3);">(b) &nbsp; Strategy ✓</strong></div></div>
-              <div class="card"><div class="card-body"><strong style="color:var(--ink);">(c)</strong> &nbsp; Observer</div></div>
-              <div class="card"><div class="card-body"><strong style="color:var(--ink);">(d)</strong> &nbsp; Nenhum — tá simples o suficiente</div></div>
-              <p style="font-size:12px;color:var(--ink2);margin-top:8px;line-height:1.5;font-style:italic;"><strong style="color:var(--accent2);font-style:normal;">Por quê:</strong> sempre que o comportamento depende de um <em>tipo</em> que pode crescer, Strategy é o primeiro candidato.</p>
+            <div class="quiz-controls">
+              <span class="hint">Clique em um código e envie sua resposta.</span>
+              <button class="quiz-submit" type="button" disabled>Enviar resposta</button>
+            </div>
+            <div class="quiz-feedback">
+              <div class="quiz-feedback-correct"><strong>Correto!</strong> No <strong>Código A</strong> temos várias formas de fazer <em>a mesma coisa</em> — cálculo de frete por transportadora. Cada variação vira uma classe que implementa <code class="inline">FreteStrategy</code>. &nbsp; <strong>B</strong> é <em>State</em> (ciclo de vida), <strong>C</strong> é validação em cadeia (guard clauses bastam), <strong>D</strong> pede <em>Observer</em>.</div>
+              <div class="quiz-feedback-incorrect">A resposta é <strong>Código A</strong> — lá há várias formas de fazer <em>a mesma coisa</em>, que é exatamente o que Strategy encapsula. &nbsp; <strong>B</strong> é <em>State</em> (estados do ciclo de vida), <strong>C</strong> é só validação simples, <strong>D</strong> pede <em>Observer</em> (notificar vários interessados do mesmo evento).</div>
             </div>
           </div>
         </div>
         <div class="corner-num">27</div>
       </div>
 
-      <!-- ═══ SLIDE 25 — BLOCO 8: QUIZ PERGUNTA 2 ═══ -->
-      <div class="slide s-dark2">
-        <div class="slide-inner">
-          <div class="slide-tag">Bloco 8 · Mini quiz · Pergunta 2 de 3</div>
-          <h2 class="section">Strategy <em style="color:var(--accent2);font-style:normal;">ou</em> outro padrão?</h2>
-          <div class="divider"></div>
-          <p style="font-size:13px;color:var(--ink2);margin-bottom:14px;">Em cada cenário, decida: Strategy, ou outra coisa?</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
-            <div class="card" style="border-color:var(--accent);border-left:3px solid var(--accent);">
-              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Cenário 1</div>
-              <div style="font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;margin-bottom:14px;">"Jogo com 3 modos de dificuldade (fácil/médio/difícil), cada um com IA diferente dos inimigos."</div>
-              <div style="display:flex;align-items:baseline;gap:8px;margin-top:auto;">
-                <span style="font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">resposta</span>
-                <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--accent3);font-style:italic;">Strategy ✓</span>
-              </div>
-            </div>
-            <div class="card" style="border-color:var(--amber);border-left:3px solid var(--amber);">
-              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Cenário 2</div>
-              <div style="font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;margin-bottom:14px;">"Pedido que passa de Pendente → Pago → Enviado → Entregue."</div>
-              <div style="display:flex;align-items:baseline;gap:8px;margin-top:auto;">
-                <span style="font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">resposta</span>
-                <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--amber2);font-style:italic;">State</span>
-              </div>
-            </div>
-            <div class="card" style="border-color:var(--accent);border-left:3px solid var(--accent);">
-              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Cenário 3</div>
-              <div style="font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;margin-bottom:14px;">"Três algoritmos de ordenação (bubble, merge, quick) que o usuário escolhe."</div>
-              <div style="display:flex;align-items:baseline;gap:8px;margin-top:auto;">
-                <span style="font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">resposta</span>
-                <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--accent3);font-style:italic;">Strategy ✓</span>
-              </div>
-            </div>
-          </div>
-          <p style="font-size:12px;color:var(--ink2);margin-top:16px;line-height:1.5;font-style:italic;text-align:center;"><strong style="color:var(--accent2);font-style:normal;">Regra:</strong> quando o <em>cliente</em> escolhe o algoritmo → Strategy. Quando o <em>próprio objeto</em> transita entre comportamentos seguindo um ciclo de vida → geralmente State.</p>
-        </div>
-        <div class="corner-num">28</div>
-      </div>
-
-      <!-- ═══ SLIDE 26 — BLOCO 8: QUIZ PERGUNTA 3 (SOLID OCP + DIP) ═══ -->
+      <!-- ═══ QUIZ · PERGUNTA 2 DE 2 — QUANDO USAR STRATEGY ═══ -->
       <div class="slide s-dark">
         <div class="slide-inner">
-          <div class="slide-tag">Bloco 8 · Mini quiz · Pergunta 3 de 3</div>
-          <h2 class="section">Quais princípios do SOLID Strategy mais atende?</h2>
+          <div class="slide-tag">Bloco 8 · Mini quiz · Pergunta 2 de 2</div>
+          <h2 class="section">Em qual desses cenários <em style="color:var(--accent2);font-style:normal;">vale a pena</em> aplicar Strategy?</h2>
           <div class="divider"></div>
-          <p style="font-size:13px;color:var(--ink2);margin-bottom:14px;">(pode ter mais de um — marque todos)</p>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
-            <div class="card"><div class="card-body" style="text-align:center;"><strong style="color:var(--ink);">(a)</strong><br><strong>SRP</strong><br><span style="font-size:11px;color:var(--muted);">Single Responsibility</span></div></div>
-            <div class="card" style="border-color:var(--accent);border-left:3px solid var(--accent);background:rgba(16,185,129,0.06);"><div class="card-body" style="text-align:center;"><strong style="color:var(--accent3);">(b) ✓</strong><br><strong style="color:var(--accent3);">OCP</strong><br><span style="font-size:11px;color:var(--muted);">Open/Closed</span></div></div>
-            <div class="card" style="border-color:var(--accent);border-left:3px solid var(--accent);background:rgba(16,185,129,0.06);"><div class="card-body" style="text-align:center;"><strong style="color:var(--accent3);">(c) ✓</strong><br><strong style="color:var(--accent3);">DIP</strong><br><span style="font-size:11px;color:var(--muted);">Dependency Inversion</span></div></div>
-            <div class="card"><div class="card-body" style="text-align:center;"><strong style="color:var(--ink);">(d)</strong><br><strong>ISP</strong><br><span style="font-size:11px;color:var(--muted);">Interface Segregation</span></div></div>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;">
-            <div class="card" style="border-left:3px solid var(--accent);">
-              <div class="card-title" style="color:var(--accent3);">OCP — extensão sem modificação</div>
-              <div class="card-body">Você <em>estende</em> o sistema adicionando <strong style="color:var(--ink);">uma classe nova</strong> (<code class="inline">FreteLoggi</code>), sem <em>modificar</em> nada do código existente. Definição literal do princípio.</div>
+          <div class="quiz-interactive" data-correct="C">
+            <div class="quiz-cards">
+              <div class="quiz-card" data-option="A">
+                <div class="quiz-card-label"><span class="quiz-card-letter">A</span>Cenário A</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:6px;">Script de fim de semana</div>
+                <div style="font-size:12.5px;color:var(--ink2);line-height:1.5;">Uma ferramenta de 200 linhas que converte CSV em JSON. Rodou uma vez no trabalho da faculdade, <strong style="color:var(--ink);">nunca mais vai ser tocada</strong>.</div>
+              </div>
+              <div class="quiz-card" data-option="B">
+                <div class="quiz-card-label"><span class="quiz-card-letter">B</span>Cenário B</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:6px;">Regra que nunca muda</div>
+                <div style="font-size:12.5px;color:var(--ink2);line-height:1.5;">Cálculo de imposto definido por lei há <strong style="color:var(--ink);">15 anos</strong>. Dois casos: pessoa física e jurídica — e <strong style="color:var(--ink);">nada indica que vá mudar</strong>.</div>
+              </div>
+              <div class="quiz-card" data-option="C">
+                <div class="quiz-card-label"><span class="quiz-card-letter">C</span>Cenário C</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:6px;">E-commerce em crescimento</div>
+                <div style="font-size:12.5px;color:var(--ink2);line-height:1.5;"><strong style="color:var(--ink);">3 métodos de pagamento</strong> hoje (Pix, cartão, boleto). O produto pediu pra adicionar PayPal, cripto e parcelamento customizado <em>nos próximos meses</em>.</div>
+              </div>
+              <div class="quiz-card" data-option="D">
+                <div class="quiz-card-label"><span class="quiz-card-letter">D</span>Cenário D</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:6px;">Diferença trivial</div>
+                <div style="font-size:12.5px;color:var(--ink2);line-height:1.5;">Formatar preço como <code class="inline">R$ 100,00</code> ou <code class="inline">$ 100.00</code>. Duas moedas, <strong style="color:var(--ink);">praticamente a mesma lógica</strong> — trocar vírgula por ponto.</div>
+              </div>
             </div>
-            <div class="card" style="border-left:3px solid var(--accent);">
-              <div class="card-title" style="color:var(--accent3);">DIP — dependência da abstração</div>
-              <div class="card-body"><code class="inline">Carrinho</code> (alto nível) <strong style="color:var(--ink);">não depende</strong> de <code class="inline">FreteCorreios</code> ou <code class="inline">FreteJadlog</code> (baixo nível). Todos dependem da abstração <code class="inline">FreteStrategy</code>. A dependência <strong style="color:var(--accent2);">inverteu</strong>.</div>
+            <div class="quiz-controls">
+              <span class="hint">Escolha o cenário em que Strategy realmente compensa.</span>
+              <button class="quiz-submit" type="button" disabled>Enviar resposta</button>
+            </div>
+            <div class="quiz-feedback">
+              <div class="quiz-feedback-correct"><strong>Correto!</strong> O <strong>Cenário C</strong> é o caso clássico — variações que <em>tendem a crescer</em> e cada forma encapsulada numa classe torna a extensão trivial. &nbsp; <strong>A</strong> é over-engineering em script descartável, <strong>B</strong> tem regra estável (um <code class="inline">if/else</code> basta), <strong>D</strong> é abstração vazia com variação trivial.</div>
+              <div class="quiz-feedback-incorrect">A resposta é <strong>Cenário C</strong> — Strategy compensa quando as variações <em>tendem a crescer</em>, como métodos de pagamento num e-commerce em expansão. &nbsp; <strong>A</strong> é over-engineering pra script descartável, <strong>B</strong> tem regra estável (não precisa abstrair), <strong>D</strong> é variação trivial (interface pra constar).</div>
             </div>
           </div>
-          <p style="font-size:11.5px;color:var(--muted);margin-top:12px;font-style:italic;text-align:center;">De bônus: <strong style="color:var(--ink2);font-style:normal;">SRP</strong> — cada estratégia concreta tem uma única responsabilidade.</p>
         </div>
-        <div class="corner-num">29</div>
+        <div class="corner-num">28</div>
       </div>
 
       <!-- ═══ SLIDE 27 — BLOCO 9: CONCLUSÃO (3 FRASES) ═══ -->
@@ -1188,40 +1135,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
             </li>
           </ul>
         </div>
-        <div class="corner-num">30</div>
-      </div>
-
-      <!-- ═══ SLIDE 28 — BLOCO 10 [RESERVA]: STRATEGY vs STATE ═══ -->
-      <div class="slide s-dark">
-        <div class="slide-inner">
-          <div class="slide-tag">Bloco 10 · [Reserva] · Bônus</div>
-          <h2 class="section">Strategy <em style="color:var(--ink2);">vs</em> State — mesma estrutura, intenções diferentes</h2>
-          <div class="divider"></div>
-          <p style="font-size:13.5px;color:var(--ink2);line-height:1.6;max-width:880px;margin-bottom:14px;">
-            Se você olhar os diagramas UML lado a lado, eles são <strong style="color:var(--ink);">praticamente idênticos</strong>: um Context, uma interface, várias classes concretas. A diferença está na <strong style="color:var(--accent2);">intenção</strong>, não na estrutura.
-          </p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-            <div class="card" style="border-color:var(--accent);border-left:3px solid var(--accent);">
-              <div class="card-title" style="color:var(--accent3);">Strategy — o cliente escolhe</div>
-              <div class="card-body" style="margin-bottom:8px;">As estratégias <strong style="color:var(--ink);">não se conhecem</strong>. Quem decide trocar é o <strong style="color:var(--ink);">cliente</strong> (ou uma Factory externa).</div>
-              <div style="padding:10px 12px;background:rgba(16,185,129,.06);border-left:2px solid var(--accent);border-radius:4px;margin-top:10px;">
-                <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">pergunta que responde</div>
-                <div style="font-size:13.5px;color:var(--ink);font-style:italic;">"Qual algoritmo eu uso pra esta execução?"</div>
-              </div>
-              <div style="font-size:11.5px;color:var(--muted);margin-top:10px;"><strong>Exemplo:</strong> frete — o usuário escolhe a transportadora.</div>
-            </div>
-            <div class="card" style="border-color:var(--amber);border-left:3px solid var(--amber);">
-              <div class="card-title" style="color:var(--amber2);">State — o objeto transita</div>
-              <div class="card-body" style="margin-bottom:8px;">Os estados <strong style="color:var(--ink);">se conhecem</strong> — cada um sabe pra qual próximo pode ir. Quem decide é o <strong style="color:var(--ink);">próprio objeto</strong>, reagindo a eventos.</div>
-              <div style="padding:10px 12px;background:rgba(251,191,36,.06);border-left:2px solid var(--amber);border-radius:4px;margin-top:10px;">
-                <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">pergunta que responde</div>
-                <div style="font-size:13.5px;color:var(--ink);font-style:italic;">"Em que momento do ciclo de vida estou agora?"</div>
-              </div>
-              <div style="font-size:11.5px;color:var(--muted);margin-top:10px;"><strong>Exemplo:</strong> Pedido → Pendente → Pago → Enviado → Entregue.</div>
-            </div>
-          </div>
-        </div>
-        <div class="corner-num">31</div>
+        <div class="corner-num">29</div>
       </div>
 
       <!-- ═══ SLIDE 29 — PERGUNTAS? ═══ -->
@@ -1233,9 +1147,9 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
           <p style="font-size:16px;color:var(--ink2);max-width:680px;line-height:1.6;">
             Sobre Strategy, sobre a demo de frete, sobre o quiz — ou sobre qualquer coisa que ficou na cabeça durante a apresentação.
           </p>
-          <p style="font-size:11px;color:var(--muted);margin-top:28px;letter-spacing:.06em;">Factory costuma aparecer junto — pra decidir <em>qual</em> Strategy instanciar.</p>
+ 
         </div>
-        <div class="corner-num">32</div>
+        <div class="corner-num">31</div>
       </div>
 
       <!-- ═══ SLIDE 30 — RECOMENDAÇÕES ═══ -->
@@ -1268,7 +1182,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
             </a>
           </div>
         </div>
-        <div class="corner-num">33</div>
+        <div class="corner-num">32</div>
       </div>
 
       <!-- ═══ SLIDE 31 — OBRIGADO! ═══ -->
@@ -1299,7 +1213,7 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
             </div>
           </div>
         </div>
-        <div class="corner-num">34</div>
+        <div class="corner-num">33</div>
       </div>
 
     </div>
@@ -1375,16 +1289,14 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
     <a class="toc-item" data-goto="23">24 · Prós e contras</a>
     <a class="toc-item" data-goto="24">25 · Quando aplicar</a>
     <a class="toc-item" data-goto="25">26 · Quando NÃO usar</a>
-    <a class="toc-item" data-goto="26">27 · Quiz P1 — reconhecer</a>
-    <a class="toc-item" data-goto="27">28 · Quiz P2 — Strategy vs outro</a>
-    <a class="toc-item" data-goto="28">29 · Quiz P3 — SOLID</a>
+    <a class="toc-item" data-goto="26">27 · Quiz Q1 — Strategy resolve?</a>
+    <a class="toc-item" data-goto="27">28 · Quiz Q2 — Quando usar?</a>
 
     <div class="toc-section">Encerramento</div>
-    <a class="toc-item" data-goto="29">30 · Conclusão (3 frases)</a>
-    <a class="toc-item" data-goto="30">31 · [Reserva] Strategy vs State</a>
-    <a class="toc-item" data-goto="31">32 · Perguntas?</a>
-    <a class="toc-item" data-goto="32">33 · Recomendações</a>
-    <a class="toc-item" data-goto="33">34 · Obrigado!</a>
+    <a class="toc-item" data-goto="28">29 · Conclusão (3 frases)</a>
+    <a class="toc-item" data-goto="30">31 · Perguntas?</a>
+    <a class="toc-item" data-goto="31">32 · Recomendações</a>
+    <a class="toc-item" data-goto="32">33 · Obrigado!</a>
   </div>
 </div>
 
@@ -1393,5 +1305,87 @@ carrinho.<span class="tok-mt">setFrete</span>(freteGratis);</pre>
 <div id="counter"></div>
 
 <script src="js/engine.js"></script>
+<div class="quiz-overlay" id="quiz-overlay">
+  <div class="quiz-modal" id="quiz-modal">
+    <div class="quiz-modal-icon" id="quiz-modal-icon"></div>
+    <div class="quiz-modal-title" id="quiz-modal-title"></div>
+    <div class="quiz-modal-body" id="quiz-modal-body"></div>
+    <button class="quiz-modal-close" id="quiz-modal-close" type="button">fechar · ESC</button>
+  </div>
+</div>
+
+<script>
+  // Quiz interativo (Bloco 8)
+  (function () {
+    var overlay   = document.getElementById('quiz-overlay');
+    var modal     = document.getElementById('quiz-modal');
+    var modalIcon = document.getElementById('quiz-modal-icon');
+    var modalTitle= document.getElementById('quiz-modal-title');
+    var modalBody = document.getElementById('quiz-modal-body');
+    var modalClose= document.getElementById('quiz-modal-close');
+
+    function openQuizModal(isCorrect, msgHTML) {
+      overlay.className = 'quiz-overlay ' + (isCorrect ? 'correct' : 'incorrect');
+      modalIcon.textContent  = isCorrect ? '✔' : '✕';
+      modalTitle.textContent = isCorrect ? 'Correto!' : 'Quase lá…';
+      modalBody.innerHTML    = msgHTML || '';
+      /* restart pop animation */
+      modal.style.animation = 'none';
+      modal.offsetHeight; /* reflow */
+      modal.style.animation = '';
+      overlay.classList.add('open');
+    }
+    function closeQuizModal() {
+      overlay.classList.remove('open');
+    }
+
+    if (modalClose) modalClose.addEventListener('click', function (e) { e.stopPropagation(); closeQuizModal(); });
+    if (overlay) overlay.addEventListener('click', function (e) {
+      if (!modal || !modal.contains(e.target)) closeQuizModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeQuizModal();
+    });
+
+    document.querySelectorAll('.quiz-interactive').forEach(function (quiz) {
+      var cards    = quiz.querySelectorAll('.quiz-card');
+      var submit   = quiz.querySelector('.quiz-submit');
+      var correct  = quiz.dataset.correct;
+      var selected = null;
+      var submitted = false;
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (submitted) return;
+          cards.forEach(function (c) { c.classList.remove('selected'); });
+          card.classList.add('selected');
+          selected = card.dataset.option;
+          if (submit) submit.disabled = false;
+        });
+      });
+
+      if (submit) {
+        submit.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (!selected || submitted) return;
+          submitted = true;
+          var isCorrect = selected === correct;
+          cards.forEach(function (c) {
+            c.classList.add('locked');
+            if (c.dataset.option === correct)       c.classList.add('correct');
+            else if (c.dataset.option === selected) c.classList.add('wrong');
+          });
+          submit.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+          submit.classList.add('answered', isCorrect ? 'correct' : 'incorrect');
+          submit.disabled = true;
+
+          var msgEl = quiz.querySelector(isCorrect ? '.quiz-feedback-correct' : '.quiz-feedback-incorrect');
+          openQuizModal(isCorrect, msgEl ? msgEl.innerHTML : '');
+        });
+      }
+    });
+  })();
+</script>
 </body>
 </html>

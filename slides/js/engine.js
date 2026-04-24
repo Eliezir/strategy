@@ -58,8 +58,8 @@
     const ind = slide.querySelector('.step-indicator');
     if (ind) {
       ind.innerHTML = step > 0
-        ? `Passo ${step} / ${total} &nbsp; <kbd>,</kbd> voltar &nbsp; <kbd>.</kbd> próximo`
-        : `<kbd>.</kbd> destacar trechos &nbsp;·&nbsp; <kbd>,</kbd> voltar`;
+        ? `<button class="step-kbd-btn" data-action="next" type="button"><kbd>.</kbd> próximo</button> &nbsp;·&nbsp; <button class="step-kbd-btn" data-action="prev" type="button"><kbd>,</kbd> voltar</button> &nbsp;<span style="opacity:.5">${step}&thinsp;/&thinsp;${total}</span>`
+        : `<button class="step-kbd-btn" data-action="next" type="button"><kbd>.</kbd> destacar</button> &nbsp;·&nbsp; <button class="step-kbd-btn" data-action="prev" type="button"><kbd>,</kbd> voltar</button>`;
     }
     if (step > 0) {
       requestAnimationFrame(() => scrollStepIntoView(slide));
@@ -83,6 +83,14 @@
     if (currentStep > 0) { currentStep--; applyStep(slide, currentStep); return true; }
     return false;
   }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.step-kbd-btn[data-action]');
+    if (!btn) return;
+    e.stopPropagation();
+    if (btn.dataset.action === 'next') nextStep();
+    else if (btn.dataset.action === 'prev') prevStep();
+  });
 
   function show(idx) {
     slides.forEach((s, i) => {
